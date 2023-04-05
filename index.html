@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="initial-scale=1, shrink-to-fit=no, width=device-width" name="viewport">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <link rel="stylesheet" href="res/material.icons.css">
+    <link rel="stylesheet" href="res/material.indigo-pink.min.css">
+    <script defer src="res/material.min.js"></script>
+    <title>Bill's Utilities</title>
+</head>
+
+<body style="background-color: white;">
+
+    <style>
+        .my-center {
+            display: flex;
+            flex-direction: row;
+            justify-content: center;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            /* max-width: 1200px; */
+            /* align-items: flex-start; */
+        }
+    </style>
+
+    <!-- Always shows a header, even in smaller screens. -->
+    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
+        <header class="mdl-layout__header">
+            <div class="mdl-layout__header-row">
+                <span class="mdl-layout-title">tools.billhu.cn (still under development)</span>
+                <div class="mdl-layout-spacer"></div>
+                <nav class="mdl-navigation mdl-layout--large-screen-only">
+                    <a class="mdl-navigation__link" href="/">Introduction</a>
+                    <a class="mdl-navigation__link" href="https://www.billhu.us">Blog</a>
+                    <a class="mdl-navigation__link" href="https://www.billhu.us/about">About</a>
+                </nav>
+            </div>
+        </header>
+        <div class="mdl-layout__drawer">
+            <span class="mdl-layout-title">Utilities</span>
+            <nav class="mdl-navigation">
+                <a class="mdl-navigation__link" href="/">Introduction</a>
+                <a class="mdl-navigation__link" href="https://www.billhu.us">Blog</a>
+                <a class="mdl-navigation__link" href="https://www.billhu.us/about">About</a>
+            </nav>
+        </div>
+        <main class="mdl-layout__content">
+            <div class="page-content">
+                <!-- Your content goes here -->
+                <style>
+                    .demo-card-wide {
+                        margin: 20px;
+                    }
+
+                    .demo-card-wide.mdl-card {
+                        width: 512px;
+                        max-width: 80%;
+                    }
+
+                    .demo-card-wide>.mdl-card__title {
+                        color: #fff;
+                        height: 176px;
+                        /* background: url('res/welcome_card.jpg') center / cover; */
+                        background: #8f4cc7;
+                    }
+
+                    .demo-card-wide>.mdl-card__menu {
+                        color: #fff;
+                    }
+                </style>
+
+                <div class="my-center">
+                    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title">
+                            <h2 class="mdl-card__title-text">Minesweeper</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            Windows-XP-style Minesweeper in your browser. Implemented in JavaScript.
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/minesweeper/#200">
+                                Play
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title" style="background-color: #46B6AC;">
+                            <h2 class="mdl-card__title-text">Dino</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            Chrome dino game. Implemented in JavaScript.
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/dino">
+                                Play
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title" style="background-color: #dd608a;">
+                            <h2 class="mdl-card__title-text">IEEE754 converter</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            32-bit single precision float number converter between binary, decimal and hexadecimal. Implemented in JavaScript.
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/ieee754">
+                                View
+                            </a>
+
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="https://github.com/billhu0/IEEE754-converter">
+                                GitHub Link
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title" style="background-color: #ebaa56;">
+                            <h2 class="mdl-card__title-text">Venus Simulator</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            Venus, a RISC-V assembly code Simulator.
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="https://venus.billhu.cn">
+                                View
+                            </a>
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="https://venus.cs61c.org">
+                                CS61C venus link
+                            </a>
+                        </div>
+                    </div>
+
+                    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
+                        <div class="mdl-card__title" style="background-color: #f7e69d;">
+                            <h2 class="mdl-card__title-text">Venus Simulator (阉割版)</h2>
+                        </div>
+                        <div class="mdl-card__supporting-text">
+                            Venus, a RISC-V assembly code Simulator.
+                        </div>
+                        <div class="mdl-card__actions mdl-card--border">
+                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="https://venus1.billhu.cn">
+                                View
+                            </a>
+                        </div>
+                    </div>
+                </div>
+
+                <style>
+                    footer{
+                        display: flex;
+                        justify-content: center;
+                        align-items: center;
+                        margin-top: 20px;
+                    }
+    
+                    footer p{
+                        width: max-content;
+                    }
+                </style>
+    
+                <footer>
+                    <p>Designed By <a href="https://billhu.cn">Bill Hu</a>.</p>
+                    <p>This webpage is still under development.</p>
+                </footer>
+
+            </div>
+            
+        </main>
+    </div>
+</body>
+
+</html>

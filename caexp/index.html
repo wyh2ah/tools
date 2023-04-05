@@ -1,0 +1,200 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta content="initial-scale=1, shrink-to-fit=no, width=device-width" name="viewport">
+    <link href="https://fonts.googleapis.com/css?family=Roboto:300,300i,400,400i,500,500i,700,700i|Roboto+Mono:300,400,700|Roboto+Slab:300,400,700" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+    <link href="css/material.min.css" rel="stylesheet">
+    <script async defer data-website-id="dc275996-e0ec-462a-a65e-574bb7584891" src="https://umami.billhu.cn/umami.js"></script>
+    <title>酷安等级网页版 (debug)</title>
+</head>
+
+<body>
+
+    <nav class="navbar navbar-expand-lg navbar-dark bg-primary">
+        <span class="navbar-brand mb-0 h1">酷安等级 (debug)</span>
+
+        <!-- <button type="button" class="btn btn-link">Link</button> -->
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item">
+                    <a id="helpButton" class="nav-link" href="#">帮助</a>
+                </li>
+            </ul>
+            
+        </div>
+    </nav>
+
+    <div class="jumbotron" style="margin: 3%;">
+        <form>
+            <div class="form-group row" style="margin-bottom: 5%;">
+                <label for="input" class="col-sm-2 col-form-label">当前经验: </label>
+                <div class="col-sm-10" style="display: flex; justify-content: flex-start;">
+                    <input type="number" class="form-control" id="expInput" placeholder="请输入当前经验..." >
+                    <h5 id="currentLvText" style="margin-left: 10px;"><strong>Lv.0</strong></h5>
+                </div>
+            </div>
+
+            <div class="form-group row" style="margin-top: 5%;">
+                
+                <label for="inputPassword" class="col-sm-2 col-form-label">目标等级: </label>
+                <!-- <div style="padding-left: 20px; padding-right: 20px;"> -->
+                <div style="flex: 0 0 83.333333%; max-width: 83.333333%; min-height: 1px; padding-left: 20px; padding-right: 20px; box-sizing: inherit; text-align: start;">
+                    <div style="display: flex; justify-content: flex-start;">
+                        <input id="targetInputRange" type="range" class="custom-range" min="0" max="15"> 
+                        <h5 id="targetLvText" style="margin-left: 10px;"><strong>Lv.next</strong></h5>
+                    </div>
+                </div>
+                
+                <!-- <label for="inputPassword" class="col-sm-2 col-form-label">目标等级: </label> -->
+                <!-- <div class="col-sm-10">
+                    <input id="targetInputRange" type="range" class="custom-range" min="0" max="15" id="customRange2">Lv.0</input>
+                </div> -->
+            </div>
+        </form>
+        <!-- <button id="testButton" type="button" class="btn btn-primary">Test Button</button> -->
+
+    </div>
+
+    <div class="jumbotron" style="margin: 3%;">
+        <div class="progress" style="margin: 15px;">
+            <div id="progressBar" class="progress-bar" role="progressbar" style="width: 0%; border-bottom-color: darkviolet;" aria-valuenow="0" aria-valuemin="0" aria-valuemax="100"></div>
+        </div>
+        <h4 id="resultH4"></h4>
+        <h5 id="resultH5"></h5>
+    </div>
+
+    <script>
+
+        let helpButton = document.getElementById('helpButton');
+        
+        let input_exp = document.getElementById('expInput');
+        let input_target_lv = document.getElementById('targetInputRange');
+
+        let output_current_lv = document.getElementById('currentLvText');
+        let output_target_lv = document.getElementById('targetLvText');
+        let output_progress = document.getElementById('progressBar');
+        let output_text = document.getElementById('resultH4');
+        let output_text_detail = document.getElementById('resultH5');
+
+        function calc_target_exp(level){
+            if (level == 0) return 0;
+            else if (level == 1) return 300;
+            else return (level-1) * (level-1) * (level-1) * 1000;
+        }
+
+        function calc_limit(level){
+            if (level == 0) return 110;
+            else if (level == 1) return 110;
+            else if (level == 2) return 210;
+            else if (level == 3) return 310;
+            else if (level == 4) return 410;
+            else if (level == 5) return 510;
+            else if (level == 6) return 710;
+            else if (level == 7) return 910;
+            else if (level == 8) return 1110;
+            else if (level == 9) return 1310;
+            else if (level == 10) return 1610;
+            else if (level == 11) return 1710;
+            else if (level == 12) return 2010;
+            else if (level == 13) return 2210;
+            else if (level == 14) return 2410;
+            return 2610;
+        }
+
+        function get_now_date(){
+            var timestamp = Date.parse(new Date());
+            var date = new Date(timestamp);
+            var Y = date.getFullYear();
+            var M = (date.getMonth() + 1 < 10 ? '0' + (date.getMonth() + 1) : date.getMonth() + 1);
+            var D = date.getDate() < 10 ? '0' + date.getDate() : date.getDate(); 
+            return Y + '-' + M + '-' + D;
+        }
+
+        function get_add_day(n){
+            let now_date = this.get_now_date();
+            let new_date = new Date(now_date);
+            new_date = +new_date + 1000*60*60*24*n;
+            new_date = new Date(new_date);
+            let month = new_date.getMonth()+1 < 10?'0'+(new_date.getMonth()+1):new_date.getMonth()+1;
+            let date = new_date.getDate()+1 < 10?'0'+new_date.getDate():new_date.getDate();
+            return new_date.getFullYear()+"-"+month+"-"+date; 
+        }
+
+        function refresh(){
+            // get inputs
+            var curr_exp = input_exp.value;
+            if (curr_exp == '') curr_exp = 0; else curr_exp = curr_exp.valueOf();
+            var target_lv = input_target_lv.value.valueOf();
+
+            // calculate the current level
+            var current_level = 0;
+            if (curr_exp < 300) current_level = 0;
+            else if (curr_exp < 1000) current_level = 1;
+            else 
+                for (var i = 1; i < 15; i++)
+                    if (curr_exp >= (i*i*i) * 1000) current_level = i + 1;
+            output_current_lv.innerHTML = '\<strong\>Lv.' + current_level.toString() + '\<strong\>';
+
+            // calculate target experience
+            if (target_lv == 0) target_lv = current_level + 1;
+            target_exp = calc_target_exp(target_lv);
+
+            var tmp;
+            if (target_lv == 0) tmp = 'next';
+            else tmp = target_lv.toString();
+            output_target_lv.innerHTML = '\<strong\>Lv.' + tmp + '\<strong\>';
+            delete tmp;
+
+            var percent = Math.round(100 * curr_exp / target_exp);
+            output_progress.style.width = percent.toString() + '%';
+            output_progress.innerHTML = curr_exp.toString() + '/' + target_exp.toString();
+
+            // start main calculation
+            var res1 = ``;
+            var res2 = ``;
+            var days_needed_in_total = 0;
+
+            if (current_level >= target_lv) {
+                res1 = `<p>目标等级应大于当前等级</p>`
+                res2 = ``;
+                days_needed_in_total = 0;
+            } else {
+                var curr_exp_tmp = curr_exp.valueOf();
+                for (i = current_level; i < target_lv; i++){
+                    var exp_needed_for_this_level = calc_target_exp(i + 1) - curr_exp_tmp;
+                    var days_needed_for_this_level = Math.ceil(exp_needed_for_this_level / calc_limit(i)); 
+                    curr_exp_tmp = parseInt(curr_exp_tmp) + parseInt(days_needed_for_this_level * calc_limit(i));
+                    res2 += `<p>升级到Lv.${i+1}需${exp_needed_for_this_level}经验，每日上限为${calc_limit(i)}经验，最快需${days_needed_for_this_level}天。此时经验值为${curr_exp_tmp.toString()}。</p>`
+                    days_needed_in_total = parseInt(days_needed_in_total) + parseInt(days_needed_for_this_level);
+                }
+                res1 = `<p>最快需${days_needed_in_total}天可以升级到Lv.${target_lv}</p>` + `<p>最快升级日期${get_add_day(days_needed_in_total)}</p>` + `<p>计算过程如下，仅供参考</p>`;
+            }
+
+            output_text.innerHTML = res1;
+            output_text_detail.innerHTML = res2;
+
+        }
+
+        input_target_lv.addEventListener('mousemove', refresh);
+        input_target_lv.addEventListener('change', refresh);
+        input_exp.addEventListener('input', refresh);
+        input_exp.addEventListener('change', refresh);
+
+        helpButton.addEventListener('click', function () {
+            alert('开发者：酷安@李长辉Lichanghui\n \n使用方法：输入当前经验值，滑动选取目标等级（最左端代表下一级），即可自动计算\n\n');
+        })
+    
+    </script>
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js"></script>
+    <script src="js/material.min.js"></script>
+
+</body>
+
+</html>

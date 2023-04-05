@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
+    <meta name="keywords" content="">
+    <meta name="description" content="IEEE754 single precision floating point number converter">
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="IEEE754 converter">
+    <meta property="og:url" content="https://tools.billhu.cn/ieee754">
+    <meta property="og:site_name" content="IEEE754 converter">
+    <meta property="og:description" content="IEEE754 single precision floating point number converter">
+    <meta property="og:locale" content="en_US">
+    <meta property="article:author" content="Bill Hu">
+    <title>IEEE754 Converter - By Bill Hu</title>
+    <link rel="stylesheet" href="res/material.icons.css">
+    <link rel="stylesheet" href="res/material.indigo-pink.min.css">
+    <script defer src="res/material.min.js"></script>
+    <style>
+        @font-face {
+            font-family: 'JetBrains Mono';
+            src: url("fonts/JetBrainsMono-Regular.woff2") format("woff2");
+            unicode-range: U+0000-00FF, U+0131, U+0152-0153, U+02BB-02BC, U+02C6, U+02DA, U+02DC, U+2000-206F, U+2074, U+20AC, U+2122, U+2191, U+2193, U+2212, U+2215, U+FEFF, U+FFFD;
+        }
+        .jb-font {
+            font-family: "JetBrains Mono", serif;
+        }
+        .max-width {
+            width: 100%;
+        }
+    </style>
+</head>
+<body>
+
+<div style="text-align: center;">
+    <h3>IEEE754 converter (ts)</h3>
+</div>
+
+<div style="display: flex; justify-content: center">
+    <table class="mdl-data-table mdl-js-data-table">
+        <thead>
+        <tr>
+            <td></td>
+            <td>Sign</td>
+            <td>Exponent</td>
+            <td>Mantissa</td>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+            <td>Binary</td>
+            <td>
+                <div style="text-align: center">
+                    <input type="checkbox" id="cb-s">
+                </div>
+                <div style="text-align: center">
+                    <span class="jb-font" id="txt-s">0</span>
+                </div>
+            </td>
+            <td>
+                <div style="text-align: center">
+                    <input type="checkbox" id="cb-e1">
+                    <input type="checkbox" id="cb-e2">
+                    <input type="checkbox" id="cb-e3">
+                    <input type="checkbox" id="cb-e4">
+                    <input type="checkbox" id="cb-e5">
+                    <input type="checkbox" id="cb-e6">
+                    <input type="checkbox" id="cb-e7">
+                    <input type="checkbox" id="cb-e8">
+                </div>
+                <div style="text-align: center">
+                    <span class="jb-font" id="txt-e">00000000</span>
+                </div>
+            </td>
+            <td>
+                <div style="text-align: center">
+                    <input type="checkbox" id="cb-m1">
+                    <input type="checkbox" id="cb-m2">
+                    <input type="checkbox" id="cb-m3">
+                    <input type="checkbox" id="cb-m4">
+                    <input type="checkbox" id="cb-m5">
+                    <input type="checkbox" id="cb-m6">
+                    <input type="checkbox" id="cb-m7">
+                    <input type="checkbox" id="cb-m8">
+                    <input type="checkbox" id="cb-m9">
+                    <input type="checkbox" id="cb-m10">
+                    <input type="checkbox" id="cb-m11">
+                    <input type="checkbox" id="cb-m12">
+                    <input type="checkbox" id="cb-m13">
+                    <input type="checkbox" id="cb-m14">
+                    <input type="checkbox" id="cb-m15">
+                    <input type="checkbox" id="cb-m16">
+                    <input type="checkbox" id="cb-m17">
+                    <input type="checkbox" id="cb-m18">
+                    <input type="checkbox" id="cb-m19">
+                    <input type="checkbox" id="cb-m20">
+                    <input type="checkbox" id="cb-m21">
+                    <input type="checkbox" id="cb-m22">
+                    <input type="checkbox" id="cb-m23">
+                </div>
+                <div style="text-align: center">
+                    <span class="jb-font" id="txt-m">00000000000000000000000</span>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Meaning</td>
+            <td>
+                <div style="text-align: center">
+                    <span class="jb-font" id="mean-s">+1</span>
+                </div>
+            </td>
+            <td>
+                <div style="text-align: center">
+                    <span class="jb-font" id="mean-e">2<span style="vertical-align: super;">-126</span></span>
+                </div>
+            </td>
+            <td>
+                <div style="text-align: center">
+                    <span class="jb-font" id="mean-m">0.0</span>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Represented value</td>
+            <td colspan="3">
+                <div class="jb-font">
+                    <span style="float: left" id="real-value">(+1) * (0.00000000000000000000000) * 2^-126 = 0.0</span>
+                </div>
+            </td>
+        </tr>
+
+        <tr>
+            <td>Binary num</td>
+            <td colspan="3">
+                <div class="mdl-textfield mdl-js-textfield jb-font max-width" id="bin-input-div">
+                    <input class="mdl-textfield__input jb-font" type="text" pattern="(?:0[bB])?[0-1]{0,32}" id="bin-input">
+                    <label class="mdl-textfield__label" for="bin-input"></label>
+                    <span class="mdl-textfield__error">Input is invalid or too long!</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Decimal num</td>
+            <td colspan="3">
+                <div class="mdl-textfield mdl-js-textfield jb-font max-width" id="dec-input-div">
+                    <input class="mdl-textfield__input jb-font" type="text" pattern="-?[0-9]*(\.[0-9]+)?" id="dec-input">
+                    <label class="mdl-textfield__label" for="dec-input"></label>
+                    <span class="mdl-textfield__error">Input is not a decimal number!</span>
+                </div>
+            </td>
+        </tr>
+        <tr>
+            <td>Hex num</td>
+            <td colspan="3">
+                <div class="mdl-textfield mdl-js-textfield jb-font max-width" id="hex-input-div">
+                    <input class="mdl-textfield__input jb-font" type="text" pattern="(?:0[xX])?[0-9a-fA-F]{0,8}" id="hex-input">
+                    <label class="mdl-textfield__label" for="hex-input"></label>
+                    <span class="mdl-textfield__error">Input is invalid or too long!</span>
+                </div>
+            </td>
+        </tr>
+        </tbody>
+    </table>
+
+</div>
+
+<script src="index.min.js"></script>
+</body>
+</html>

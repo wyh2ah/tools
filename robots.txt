@@ -1,0 +1,6 @@
+User-agent: *
+Allow: /
+Allow: /minesweeper/
+Allow: /ieee754/
+Allow: /dino/
+
