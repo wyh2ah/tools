@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/ieee754-react/static/css/main.61f13808.css",
+    "main.js": "/ieee754-react/static/js/main.6cc130c2.js",
+    "static/media/JetBrainsMono-Regular.woff2": "/ieee754-react/static/media/JetBrainsMono-Regular.1e66c47aca088de94ae7.woff2",
+    "index.html": "/ieee754-react/index.html",
+    "main.61f13808.css.map": "/ieee754-react/static/css/main.61f13808.css.map",
+    "main.6cc130c2.js.map": "/ieee754-react/static/js/main.6cc130c2.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.61f13808.css",
+    "static/js/main.6cc130c2.js"
+  ]
+}
