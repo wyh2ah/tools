@@ -113,6 +113,7 @@
 
         .form-group {
             margin-bottom: 1.5rem;
+            position: relative;
         }
 
         label {
@@ -281,9 +282,247 @@
             display: block;
         }
 
+        .save-route-section {
+            margin-top: 1.5rem;
+            padding: 1.5rem;
+            background: #ffffff;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.2);
+        }
+
+        .save-route-section h3 {
+            color: #000000;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .route-name-input {
+            display: flex;
+            gap: 1rem;
+            margin-bottom: 1rem;
+        }
+
+        .route-name-input input {
+            flex: 1;
+        }
+
+        .btn-save-route {
+            background: #34c759;
+            color: #ffffff;
+            border: none;
+            padding: 0.75rem 1.5rem;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+            white-space: nowrap;
+        }
+
+        .btn-save-route:hover {
+            background: #2db34e;
+        }
+
+        .btn-save-route:disabled {
+            background: rgba(0, 0, 0, 0.1);
+            color: rgba(0, 0, 0, 0.3);
+            cursor: not-allowed;
+        }
+
+        .saved-routes {
+            margin-top: 2rem;
+        }
+
+        .saved-routes h3 {
+            color: #000000;
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+        }
+
+        .route-list {
+            display: flex;
+            flex-direction: column;
+            gap: 0.75rem;
+        }
+
+        .route-item {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 1.25rem;
+            background: #f5f5f7;
+            border-radius: 10px;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            transition: border-color 0.3s ease;
+        }
+
+        .route-item:hover {
+            border-color: rgba(0, 0, 0, 0.3);
+        }
+
+        .route-info {
+            flex: 1;
+        }
+
+        .route-name {
+            color: #000000;
+            font-weight: 600;
+            font-size: 1rem;
+            margin-bottom: 0.25rem;
+        }
+
+        .route-details {
+            color: rgba(0, 0, 0, 0.6);
+            font-size: 0.85rem;
+            line-height: 1.4;
+        }
+
+        .route-actions {
+            display: flex;
+            gap: 0.5rem;
+        }
+
+        .btn-delete {
+            background: #ff3b30;
+            color: #ffffff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-delete:hover {
+            background: #d92d24;
+        }
+
+        .btn-load {
+            background: #007aff;
+            color: #ffffff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 50px;
+            font-size: 0.85rem;
+            font-weight: 500;
+            cursor: pointer;
+            transition: background 0.3s ease;
+        }
+
+        .btn-load:hover {
+            background: #0051d5;
+        }
+
+        .empty-state {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(0, 0, 0, 0.4);
+            font-size: 0.9rem;
+        }
+
         #customPaxInput {
             display: none;
             margin-top: 1rem;
+        }
+
+        .airport-inputs {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 1.5rem;
+        }
+
+        .airport-input-wrapper {
+        }
+
+        .airport-input {
+            text-transform: uppercase;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 1rem;
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            border-radius: 10px;
+            font-size: 1rem;
+            background: #ffffff;
+            color: #000000;
+            font-family: inherit;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            border-color: rgba(0, 0, 0, 0.5);
+            box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.05);
+        }
+
+        input[type="text"]::placeholder {
+            color: rgba(0, 0, 0, 0.3);
+            text-transform: none;
+        }
+
+        .airport-name {
+            margin-top: 0.5rem;
+            font-size: 0.85rem;
+            color: rgba(0, 0, 0, 0.6);
+            min-height: 1.2rem;
+        }
+
+        .airport-name.valid {
+            color: #34c759;
+            font-weight: 500;
+        }
+
+        .airport-name.invalid {
+            color: #ff3b30;
+        }
+
+        .autocomplete-dropdown {
+            position: absolute;
+            top: calc(100% - 0.5rem);
+            left: 0;
+            right: 0;
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.25);
+            border-top: none;
+            border-radius: 0 0 10px 10px;
+            max-height: 200px;
+            overflow-y: auto;
+            z-index: 2000;
+            display: none;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+        }
+
+        .autocomplete-dropdown.show {
+            display: block;
+        }
+
+        .autocomplete-item {
+            padding: 0.75rem 1rem;
+            cursor: pointer;
+            transition: background 0.2s ease;
+            border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        }
+
+        .autocomplete-item:last-child {
+            border-bottom: none;
+        }
+
+        .autocomplete-item:hover {
+            background: #f5f5f7;
+        }
+
+        .autocomplete-item strong {
+            color: #007aff;
+        }
+
+        .autocomplete-item-name {
+            font-size: 0.85rem;
+            color: rgba(0, 0, 0, 0.6);
         }
 
         @media (max-width: 768px) {
@@ -309,6 +548,23 @@
 
             .demand-inputs {
                 grid-template-columns: 1fr;
+            }
+
+            .airport-inputs {
+                grid-template-columns: 1fr;
+                gap: 1.25rem;
+            }
+
+            .airport-name {
+                font-size: 0.8rem;
+            }
+
+            .autocomplete-item {
+                padding: 0.65rem 0.875rem;
+            }
+
+            .autocomplete-item-name {
+                font-size: 0.8rem;
             }
 
             .result-grid {
@@ -363,6 +619,28 @@
                 margin-bottom: 1rem;
             }
 
+            .airport-inputs {
+                gap: 1rem;
+            }
+
+            .airport-name {
+                font-size: 0.75rem;
+                margin-top: 0.35rem;
+            }
+
+            .autocomplete-dropdown {
+                max-height: 150px;
+            }
+
+            .autocomplete-item {
+                padding: 0.6rem 0.75rem;
+                font-size: 0.85rem;
+            }
+
+            .autocomplete-item-name {
+                font-size: 0.75rem;
+            }
+
             input[type="number"],
             select {
                 font-size: 0.95rem;
@@ -400,6 +678,37 @@
                 font-size: 0.95rem;
                 padding: 0.75rem 1.25rem;
             }
+
+            .airport-inputs {
+                gap: 1rem;
+            }
+
+            .airport-name {
+                font-size: 0.75rem;
+                margin-top: 0.35rem;
+            }
+
+            .airport-input-wrapper input {
+                font-size: 0.95rem;
+                padding: 0.75rem 0.875rem;
+            }
+
+            .autocomplete-dropdown {
+                max-height: 150px;
+                font-size: 0.9rem;
+            }
+
+            .autocomplete-item {
+                padding: 0.6rem 0.75rem;
+            }
+
+            .autocomplete-item strong {
+                font-size: 0.9rem;
+            }
+
+            .autocomplete-item-name {
+                font-size: 0.75rem;
+            }
         }
     </style>
 
@@ -409,6 +718,28 @@
         <div class="header">
             <h1>AM4 Seat Calculator</h1>
             <p class="subtitle">Calculate optimal cabin configuration for Airline Manager 4</p>
+        </div>
+
+        <div class="form-section">
+            <h2 class="section-title">Route Information</h2>
+            <div class="airport-inputs">
+                <div class="airport-input-wrapper">
+                    <div class="form-group">
+                        <label for="departureAirport">Departure Airport</label>
+                        <input type="text" id="departureAirport" class="airport-input" placeholder="e.g., LAX" maxlength="3">
+                        <div class="autocomplete-dropdown" id="departureDropdown"></div>
+                    </div>
+                    <div class="airport-name" id="departureName"></div>
+                </div>
+                <div class="airport-input-wrapper">
+                    <div class="form-group">
+                        <label for="arrivalAirport">Arrival Airport</label>
+                        <input type="text" id="arrivalAirport" class="airport-input" placeholder="e.g., JFK" maxlength="3">
+                        <div class="autocomplete-dropdown" id="arrivalDropdown"></div>
+                    </div>
+                    <div class="airport-name" id="arrivalName"></div>
+                </div>
+            </div>
         </div>
 
         <div class="form-section">
@@ -479,10 +810,305 @@
                 Demand Ratio: <span id="demandRatio">-</span><br>
                 Seat Ratio: <span id="seatRatio">-</span>
             </div>
+
+            <div class="save-route-section">
+                <h3>Save Route Configuration</h3>
+                <div class="route-name-input">
+                    <input type="text" id="routeName" placeholder="Optional: Custom name (auto: DEP-ARR)" maxlength="50">
+                    <button class="btn-save-route" onclick="saveRoute()" id="btnSaveRoute">Save Route</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="saved-routes" id="savedRoutes">
+            <h3>Saved Routes</h3>
+            <div class="route-list" id="routeList">
+                <div class="empty-state">No saved routes yet. Calculate and save your first route!</div>
+            </div>
         </div>
     </div>
 
     <script>
+        // Airport database - loaded from CSV
+        let airports = [];
+
+        // Load airports from CSV file
+        async function loadAirports() {
+            try {
+                const response = await fetch('airports.csv');
+                const csvText = await response.text();
+                
+                // Parse CSV
+                const lines = csvText.trim().split('\n');
+                const headers = lines[0].split(',');
+                
+                airports = lines.slice(1).map(line => {
+                    // Handle CSV with possible commas in names
+                    const values = [];
+                    let currentValue = '';
+                    let inQuotes = false;
+                    
+                    for (let char of line) {
+                        if (char === '"') {
+                            inQuotes = !inQuotes;
+                        } else if (char === ',' && !inQuotes) {
+                            values.push(currentValue.trim());
+                            currentValue = '';
+                        } else {
+                            currentValue += char;
+                        }
+                    }
+                    values.push(currentValue.trim());
+                    
+                    return {
+                        code: values[0],
+                        name: values[1],
+                        city: values[2],
+                        country: values[3]
+                    };
+                });
+                
+                console.log(`Loaded ${airports.length} airports from CSV`);
+            } catch (error) {
+                console.error('Failed to load airports:', error);
+                alert('Failed to load airport database. Please refresh the page.');
+            }
+        }
+
+        // Airport validation and autocomplete
+        let currentAirports = { departure: null, arrival: null };
+
+        function setupAirportInput(inputId, dropdownId, nameId, type) {
+            const input = document.getElementById(inputId);
+            const dropdown = document.getElementById(dropdownId);
+            const nameDisplay = document.getElementById(nameId);
+
+            input.addEventListener('input', function() {
+                const value = this.value.toUpperCase();
+                this.value = value;
+
+                if (value.length === 0) {
+                    dropdown.classList.remove('show');
+                    nameDisplay.textContent = '';
+                    nameDisplay.className = 'airport-name';
+                    currentAirports[type] = null;
+                    updateSaveButtonState();
+                    return;
+                }
+
+                // Filter airports
+                const matches = airports.filter(airport => 
+                    airport.code.startsWith(value) || 
+                    airport.city.toLowerCase().includes(value.toLowerCase())
+                ).slice(0, 5);
+
+                if (matches.length > 0) {
+                    dropdown.innerHTML = matches.map(airport => `
+                        <div class="autocomplete-item" data-code="${airport.code}" data-name="${airport.name}">
+                            <div><strong>${airport.code}</strong> - ${airport.city}, ${airport.country}</div>
+                            <div class="autocomplete-item-name">${airport.name}</div>
+                        </div>
+                    `).join('');
+                    dropdown.classList.add('show');
+
+                    // Add click handlers
+                    dropdown.querySelectorAll('.autocomplete-item').forEach(item => {
+                        item.addEventListener('click', function() {
+                            const code = this.dataset.code;
+                            const name = this.dataset.name;
+                            input.value = code;
+                            nameDisplay.textContent = name;
+                            nameDisplay.className = 'airport-name valid';
+                            dropdown.classList.remove('show');
+                            currentAirports[type] = { code, name };
+                            updateSaveButtonState();
+                        });
+                    });
+                } else {
+                    dropdown.classList.remove('show');
+                }
+
+                // Check if input matches exactly
+                if (value.length === 3) {
+                    const exact = airports.find(a => a.code === value);
+                    if (exact) {
+                        nameDisplay.textContent = exact.name;
+                        nameDisplay.className = 'airport-name valid';
+                        currentAirports[type] = { code: exact.code, name: exact.name };
+                        updateSaveButtonState();
+                    } else {
+                        nameDisplay.textContent = 'Invalid airport code';
+                        nameDisplay.className = 'airport-name invalid';
+                        currentAirports[type] = null;
+                        updateSaveButtonState();
+                    }
+                }
+            });
+
+            // Close dropdown on click outside
+            document.addEventListener('click', function(e) {
+                if (!input.contains(e.target) && !dropdown.contains(e.target)) {
+                    dropdown.classList.remove('show');
+                }
+            });
+        }
+
+        // Load saved routes on page load
+        window.addEventListener('DOMContentLoaded', async function() {
+            await loadAirports();
+            setupAirportInput('departureAirport', 'departureDropdown', 'departureName', 'departure');
+            setupAirportInput('arrivalAirport', 'arrivalDropdown', 'arrivalName', 'arrival');
+            loadSavedRoutes();
+        });
+
+        // Update save button state based on valid airports and calculation results
+        function updateSaveButtonState() {
+            const hasValidAirports = currentAirports.departure && currentAirports.arrival;
+            const hasResults = document.getElementById('resultSection').classList.contains('show');
+            document.getElementById('btnSaveRoute').disabled = !(hasValidAirports && hasResults);
+        }
+
+        // Save route to localStorage
+        function saveRoute() {
+            // Validate airports
+            if (!currentAirports.departure || !currentAirports.arrival) {
+                alert('⚠️ Please enter valid departure and arrival airport codes');
+                return;
+            }
+
+            const routeName = document.getElementById('routeName').value.trim();
+            const autoRouteName = `${currentAirports.departure.code}-${currentAirports.arrival.code}`;
+            const finalRouteName = routeName || autoRouteName;
+
+            const route = {
+                id: Date.now(),
+                name: finalRouteName,
+                departure: currentAirports.departure,
+                arrival: currentAirports.arrival,
+                economyDemand: parseInt(document.getElementById('economyDemand').value) || 0,
+                businessDemand: parseInt(document.getElementById('businessDemand').value) || 0,
+                firstDemand: parseInt(document.getElementById('firstDemand').value) || 0,
+                aircraft: document.getElementById('aircraftSelect').options[document.getElementById('aircraftSelect').selectedIndex].text,
+                totalPax: parseInt(document.getElementById('totalPaxAvailable').textContent) || 0,
+                resultFirst: parseInt(document.getElementById('resultFirst').textContent) || 0,
+                resultBusiness: parseInt(document.getElementById('resultBusiness').textContent) || 0,
+                resultEconomy: parseInt(document.getElementById('resultEconomy').textContent) || 0,
+                savedAt: new Date().toLocaleString()
+            };
+
+            // Get existing routes
+            let routes = JSON.parse(localStorage.getItem('am4Routes') || '[]');
+            routes.unshift(route); // Add to beginning
+            
+            // Keep only last 20 routes
+            if (routes.length > 20) {
+                routes = routes.slice(0, 20);
+            }
+            
+            localStorage.setItem('am4Routes', JSON.stringify(routes));
+            
+            // Clear input and reload list
+            document.getElementById('routeName').value = '';
+            document.getElementById('btnSaveRoute').disabled = true;
+            loadSavedRoutes();
+            
+            // Show success feedback
+            alert('✅ Route saved successfully!');
+        }
+
+        // Load saved routes from localStorage
+        function loadSavedRoutes() {
+            const routes = JSON.parse(localStorage.getItem('am4Routes') || '[]');
+            const routeList = document.getElementById('routeList');
+            
+            if (routes.length === 0) {
+                routeList.innerHTML = '<div class="empty-state">No saved routes yet. Calculate and save your first route!</div>';
+                return;
+            }
+            
+            routeList.innerHTML = routes.map(route => `
+                <div class="route-item">
+                    <div class="route-info">
+                        <div class="route-name">✈️ ${escapeHtml(route.name)}</div>
+                        <div class="route-details">
+                            ${route.departure ? route.departure.code : ''} → ${route.arrival ? route.arrival.code : ''} | ${route.aircraft}<br>
+                            Demand: E${route.economyDemand}/B${route.businessDemand}/F${route.firstDemand} | Config: ${route.resultFirst}F/${route.resultBusiness}B/${route.resultEconomy}E<br>
+                            Saved: ${route.savedAt}
+                        </div>
+                    </div>
+                    <div class="route-actions">
+                        <button class="btn-load" onclick="loadRoute(${route.id})">Load</button>
+                        <button class="btn-delete" onclick="deleteRoute(${route.id})">Delete</button>
+                    </div>
+                </div>
+            `).join('');
+        }
+
+        // Load a saved route into the form
+        function loadRoute(id) {
+            const routes = JSON.parse(localStorage.getItem('am4Routes') || '[]');
+            const route = routes.find(r => r.id === id);
+            
+            if (!route) return;
+            
+            // Load airports if available
+            if (route.departure) {
+                document.getElementById('departureAirport').value = route.departure.code;
+                document.getElementById('departureName').textContent = route.departure.name;
+                document.getElementById('departureName').className = 'airport-name valid';
+                currentAirports.departure = route.departure;
+            }
+            if (route.arrival) {
+                document.getElementById('arrivalAirport').value = route.arrival.code;
+                document.getElementById('arrivalName').textContent = route.arrival.name;
+                document.getElementById('arrivalName').className = 'airport-name valid';
+                currentAirports.arrival = route.arrival;
+            }
+            
+            document.getElementById('economyDemand').value = route.economyDemand;
+            document.getElementById('businessDemand').value = route.businessDemand;
+            document.getElementById('firstDemand').value = route.firstDemand;
+            
+            // Find matching aircraft or use custom
+            const aircraftSelect = document.getElementById('aircraftSelect');
+            let matchFound = false;
+            for (let i = 0; i < aircraftSelect.options.length; i++) {
+                if (aircraftSelect.options[i].value === route.totalPax.toString()) {
+                    aircraftSelect.value = route.totalPax.toString();
+                    matchFound = true;
+                    break;
+                }
+            }
+            
+            if (!matchFound) {
+                aircraftSelect.value = 'custom';
+                document.getElementById('customPax').value = route.totalPax;
+                document.getElementById('customPaxInput').style.display = 'block';
+            }
+            
+            // Scroll to top
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+            
+            alert('✅ Route loaded! Click Calculate to see results.');
+        }
+
+        // Delete a saved route
+        function deleteRoute(id) {
+            if (!confirm('Are you sure you want to delete this route?')) return;
+            
+            let routes = JSON.parse(localStorage.getItem('am4Routes') || '[]');
+            routes = routes.filter(r => r.id !== id);
+            localStorage.setItem('am4Routes', JSON.stringify(routes));
+            loadSavedRoutes();
+        }
+
+        // Escape HTML to prevent XSS
+        function escapeHtml(text) {
+            const div = document.createElement('div');
+            div.textContent = text;
+            return div.innerHTML;
+        }
+
         // Show/hide custom PAX input
         document.getElementById('aircraftSelect').addEventListener('change', function() {
             const customInput = document.getElementById('customPaxInput');
@@ -588,6 +1214,9 @@
             document.getElementById('seatRatio').textContent = seatRatioText;
 
             document.getElementById('resultSection').classList.add('show');
+            
+            // Update save button state
+            updateSaveButtonState();
         }
 
         function showError(message) {

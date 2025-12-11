@@ -1,0 +1,248 @@
+code,name,city,country
+ATL,Hartsfield-Jackson Atlanta International Airport,Atlanta,United States
+LAX,Los Angeles International Airport,Los Angeles,United States
+ORD,Chicago O'Hare International Airport,Chicago,United States
+DFW,Dallas/Fort Worth International Airport,Dallas,United States
+DEN,Denver International Airport,Denver,United States
+JFK,John F. Kennedy International Airport,New York,United States
+SFO,San Francisco International Airport,San Francisco,United States
+LAS,Harry Reid International Airport,Las Vegas,United States
+SEA,Seattle-Tacoma International Airport,Seattle,United States
+MCO,Orlando International Airport,Orlando,United States
+MIA,Miami International Airport,Miami,United States
+PHX,Phoenix Sky Harbor International Airport,Phoenix,United States
+IAH,George Bush Intercontinental Airport,Houston,United States
+BOS,Boston Logan International Airport,Boston,United States
+MSP,Minneapolis-St Paul International Airport,Minneapolis,United States
+DTW,Detroit Metropolitan Wayne County Airport,Detroit,United States
+PHL,Philadelphia International Airport,Philadelphia,United States
+LGA,LaGuardia Airport,New York,United States
+FLL,Fort Lauderdale-Hollywood International Airport,Fort Lauderdale,United States
+BWI,Baltimore/Washington International Airport,Baltimore,United States
+DCA,Ronald Reagan Washington National Airport,Washington D.C.,United States
+IAD,Washington Dulles International Airport,Washington D.C.,United States
+SLC,Salt Lake City International Airport,Salt Lake City,United States
+PDX,Portland International Airport,Portland,United States
+SAN,San Diego International Airport,San Diego,United States
+HNL,Daniel K. Inouye International Airport,Honolulu,United States
+CLT,Charlotte Douglas International Airport,Charlotte,United States
+EWR,Newark Liberty International Airport,Newark,United States
+AUS,Austin-Bergstrom International Airport,Austin,United States
+MDW,Chicago Midway International Airport,Chicago,United States
+TPA,Tampa International Airport,Tampa,United States
+BNA,Nashville International Airport,Nashville,United States
+DAL,Dallas Love Field,Dallas,United States
+STL,St. Louis Lambert International Airport,St. Louis,United States
+SJC,San Jose International Airport,San Jose,United States
+RDU,Raleigh-Durham International Airport,Raleigh/Durham,United States
+PIT,Pittsburgh International Airport,Pittsburgh,United States
+CVG,Cincinnati/Northern Kentucky International Airport,Cincinnati,United States
+IND,Indianapolis International Airport,Indianapolis,United States
+CLE,Cleveland Hopkins International Airport,Cleveland,United States
+MKE,Milwaukee Mitchell International Airport,Milwaukee,United States
+SMF,Sacramento International Airport,Sacramento,United States
+RSW,Southwest Florida International Airport,Fort Myers,United States
+SNA,John Wayne Airport,Orange County,United States
+OAK,Oakland International Airport,Oakland,United States
+ABQ,Albuquerque International Sunport,Albuquerque,United States
+BUF,Buffalo Niagara International Airport,Buffalo,United States
+OMA,Eppley Airfield,Omaha,United States
+ONT,Ontario International Airport,Ontario,United States
+ANC,Ted Stevens Anchorage International Airport,Anchorage,United States
+BDL,Bradley International Airport,Hartford,United States
+LHR,London Heathrow Airport,London,United Kingdom
+LGW,London Gatwick Airport,London,United Kingdom
+STN,London Stansted Airport,London,United Kingdom
+MAN,Manchester Airport,Manchester,United Kingdom
+EDI,Edinburgh Airport,Edinburgh,United Kingdom
+BHX,Birmingham Airport,Birmingham,United Kingdom
+GLA,Glasgow Airport,Glasgow,United Kingdom
+CDG,Charles de Gaulle Airport,Paris,France
+ORY,Paris Orly Airport,Paris,France
+NCE,Nice Côte d'Azur Airport,Nice,France
+LYS,Lyon-Saint Exupéry Airport,Lyon,France
+MRS,Marseille Provence Airport,Marseille,France
+TLS,Toulouse-Blagnac Airport,Toulouse,France
+FRA,Frankfurt Airport,Frankfurt,Germany
+MUC,Munich Airport,Munich,Germany
+DUS,Düsseldorf Airport,Düsseldorf,Germany
+TXL,Berlin Tegel Airport,Berlin,Germany
+HAM,Hamburg Airport,Hamburg,Germany
+CGN,Cologne Bonn Airport,Cologne,Germany
+STR,Stuttgart Airport,Stuttgart,Germany
+AMS,Amsterdam Airport Schiphol,Amsterdam,Netherlands
+MAD,Adolfo Suárez Madrid-Barajas Airport,Madrid,Spain
+BCN,Barcelona-El Prat Airport,Barcelona,Spain
+AGP,Málaga Airport,Málaga,Spain
+PMI,Palma de Mallorca Airport,Palma de Mallorca,Spain
+VLC,Valencia Airport,Valencia,Spain
+FCO,Leonardo da Vinci-Fiumicino Airport,Rome,Italy
+MXP,Milan Malpensa Airport,Milan,Italy
+LIN,Milan Linate Airport,Milan,Italy
+VCE,Venice Marco Polo Airport,Venice,Italy
+NAP,Naples International Airport,Naples,Italy
+ZRH,Zurich Airport,Zurich,Switzerland
+GVA,Geneva Airport,Geneva,Switzerland
+VIE,Vienna International Airport,Vienna,Austria
+BRU,Brussels Airport,Brussels,Belgium
+CPH,Copenhagen Airport,Copenhagen,Denmark
+ARN,Stockholm Arlanda Airport,Stockholm,Sweden
+OSL,Oslo Airport,Oslo,Norway
+HEL,Helsinki-Vantaa Airport,Helsinki,Finland
+DUB,Dublin Airport,Dublin,Ireland
+LIS,Lisbon Airport,Lisbon,Portugal
+OPO,Porto Airport,Porto,Portugal
+PRG,Václav Havel Airport Prague,Prague,Czech Republic
+BUD,Budapest Ferenc Liszt International Airport,Budapest,Hungary
+WAW,Warsaw Chopin Airport,Warsaw,Poland
+ATH,Athens International Airport,Athens,Greece
+IST,Istanbul Airport,Istanbul,Turkey
+SAW,Sabiha Gökçen International Airport,Istanbul,Turkey
+AYT,Antalya Airport,Antalya,Turkey
+DXB,Dubai International Airport,Dubai,United Arab Emirates
+AUH,Abu Dhabi International Airport,Abu Dhabi,United Arab Emirates
+DOH,Hamad International Airport,Doha,Qatar
+BAH,Bahrain International Airport,Manama,Bahrain
+KWI,Kuwait International Airport,Kuwait City,Kuwait
+RUH,King Khalid International Airport,Riyadh,Saudi Arabia
+JED,King Abdulaziz International Airport,Jeddah,Saudi Arabia
+CAI,Cairo International Airport,Cairo,Egypt
+AMM,Queen Alia International Airport,Amman,Jordan
+TLV,Ben Gurion Airport,Tel Aviv,Israel
+SIN,Singapore Changi Airport,Singapore,Singapore
+HKG,Hong Kong International Airport,Hong Kong,Hong Kong
+ICN,Incheon International Airport,Seoul,South Korea
+GMP,Gimpo International Airport,Seoul,South Korea
+PUS,Gimhae International Airport,Busan,South Korea
+NRT,Narita International Airport,Tokyo,Japan
+HND,Tokyo Haneda Airport,Tokyo,Japan
+KIX,Kansai International Airport,Osaka,Japan
+NGO,Chubu Centrair International Airport,Nagoya,Japan
+FUK,Fukuoka Airport,Fukuoka,Japan
+CTS,New Chitose Airport,Sapporo,Japan
+PEK,Beijing Capital International Airport,Beijing,China
+PVG,Shanghai Pudong International Airport,Shanghai,China
+SHA,Shanghai Hongqiao International Airport,Shanghai,China
+CAN,Guangzhou Baiyun International Airport,Guangzhou,China
+CTU,Chengdu Shuangliu International Airport,Chengdu,China
+SZX,Shenzhen Bao'an International Airport,Shenzhen,China
+XIY,Xi'an Xianyang International Airport,Xi'an,China
+KMG,Kunming Changshui International Airport,Kunming,China
+HGH,Hangzhou Xiaoshan International Airport,Hangzhou,China
+NKG,Nanjing Lukou International Airport,Nanjing,China
+WUH,Wuhan Tianhe International Airport,Wuhan,China
+CGQ,Changchun Longjia International Airport,Changchun,China
+CKG,Chongqing Jiangbei International Airport,Chongqing,China
+CSX,Changsha Huanghua International Airport,Changsha,China
+TAO,Qingdao Liuting International Airport,Qingdao,China
+NNG,Nanning Wuxu International Airport,Nanning,China
+FOC,Fuzhou Changle International Airport,Fuzhou,China
+SYX,Sanya Phoenix International Airport,Sanya,China
+DLC,Dalian Zhoushuizi International Airport,Dalian,China
+SHE,Shenyang Taoxian International Airport,Shenyang,China
+HAK,Haikou Meilan International Airport,Haikou,China
+URC,Urumqi Diwopu International Airport,Urumqi,China
+LHW,Lanzhou Zhongchuan International Airport,Lanzhou,China
+KWL,Guilin Liangjiang International Airport,Guilin,China
+ZUH,Zhuhai Jinwan Airport,Zhuhai,China
+NGB,Ningbo Lishe International Airport,Ningbo,China
+TNA,Jinan Yaoqiang International Airport,Jinan,China
+HFE,Hefei Xinqiao International Airport,Hefei,China
+CGO,Zhengzhou Xinzheng International Airport,Zhengzhou,China
+SJW,Shijiazhuang Zhengding International Airport,Shijiazhuang,China
+HRB,Harbin Taiping International Airport,Harbin,China
+TSN,Tianjin Binhai International Airport,Tianjin,China
+XMN,Xiamen Gaoqi International Airport,Xiamen,China
+TPE,Taiwan Taoyuan International Airport,Taipei,Taiwan
+BKK,Suvarnabhumi Airport,Bangkok,Thailand
+DMK,Don Mueang International Airport,Bangkok,Thailand
+HKT,Phuket International Airport,Phuket,Thailand
+CNX,Chiang Mai International Airport,Chiang Mai,Thailand
+KUL,Kuala Lumpur International Airport,Kuala Lumpur,Malaysia
+PEN,Penang International Airport,Penang,Malaysia
+CGK,Soekarno-Hatta International Airport,Jakarta,Indonesia
+DPS,Ngurah Rai International Airport,Bali,Indonesia
+SUB,Juanda International Airport,Surabaya,Indonesia
+MNL,Ninoy Aquino International Airport,Manila,Philippines
+CEB,Mactan-Cebu International Airport,Cebu,Philippines
+SGN,Tan Son Nhat International Airport,Ho Chi Minh City,Vietnam
+HAN,Noi Bai International Airport,Hanoi,Vietnam
+DAD,Da Nang International Airport,Da Nang,Vietnam
+DEL,Indira Gandhi International Airport,New Delhi,India
+BOM,Chhatrapati Shivaji Maharaj International Airport,Mumbai,India
+BLR,Kempegowda International Airport,Bangalore,India
+HYD,Rajiv Gandhi International Airport,Hyderabad,India
+MAA,Chennai International Airport,Chennai,India
+CCU,Netaji Subhas Chandra Bose International Airport,Kolkata,India
+GOI,Goa International Airport,Goa,India
+AMD,Sardar Vallabhbhai Patel International Airport,Ahmedabad,India
+PNQ,Pune Airport,Pune,India
+COK,Cochin International Airport,Kochi,India
+TRV,Trivandrum International Airport,Thiruvananthapuram,India
+JAI,Jaipur International Airport,Jaipur,India
+LKO,Chaudhary Charan Singh International Airport,Lucknow,India
+IXC,Chandigarh International Airport,Chandigarh,India
+GAU,Lokpriya Gopinath Bordoloi International Airport,Guwahati,India
+BBI,Biju Patnaik International Airport,Bhubaneswar,India
+NAG,Dr. Babasaheb Ambedkar International Airport,Nagpur,India
+VNS,Lal Bahadur Shastri Airport,Varanasi,India
+IXB,Bagdogra Airport,Bagdogra,India
+IXR,Ranchi Airport,Ranchi,India
+SXR,Srinagar Airport,Srinagar,India
+IXJ,Jammu Airport,Jammu,India
+SYD,Sydney Kingsford Smith Airport,Sydney,Australia
+MEL,Melbourne Airport,Melbourne,Australia
+BNE,Brisbane Airport,Brisbane,Australia
+PER,Perth Airport,Perth,Australia
+ADL,Adelaide Airport,Adelaide,Australia
+CBR,Canberra Airport,Canberra,Australia
+OOL,Gold Coast Airport,Gold Coast,Australia
+AKL,Auckland Airport,Auckland,New Zealand
+CHC,Christchurch International Airport,Christchurch,New Zealand
+WLG,Wellington International Airport,Wellington,New Zealand
+YYZ,Toronto Pearson International Airport,Toronto,Canada
+YVR,Vancouver International Airport,Vancouver,Canada
+YUL,Montréal-Trudeau International Airport,Montreal,Canada
+YYC,Calgary International Airport,Calgary,Canada
+YEG,Edmonton International Airport,Edmonton,Canada
+YOW,Ottawa Macdonald-Cartier International Airport,Ottawa,Canada
+YHZ,Halifax Stanfield International Airport,Halifax,Canada
+YWG,Winnipeg James Armstrong Richardson International Airport,Winnipeg,Canada
+MEX,Mexico City International Airport,Mexico City,Mexico
+CUN,Cancún International Airport,Cancún,Mexico
+GDL,Guadalajara International Airport,Guadalajara,Mexico
+MTY,Monterrey International Airport,Monterrey,Mexico
+TIJ,Tijuana International Airport,Tijuana,Mexico
+GRU,São Paulo/Guarulhos International Airport,São Paulo,Brazil
+GIG,Rio de Janeiro/Galeão International Airport,Rio de Janeiro,Brazil
+BSB,Brasília International Airport,Brasília,Brazil
+CGH,Congonhas Airport,São Paulo,Brazil
+SDU,Santos Dumont Airport,Rio de Janeiro,Brazil
+SSA,Salvador Airport,Salvador,Brazil
+FOR,Fortaleza Airport,Fortaleza,Brazil
+REC,Recife Airport,Recife,Brazil
+CWB,Afonso Pena International Airport,Curitiba,Brazil
+POA,Salgado Filho International Airport,Porto Alegre,Brazil
+EZE,Ministro Pistarini International Airport,Buenos Aires,Argentina
+AEP,Jorge Newbery Airfield,Buenos Aires,Argentina
+COR,Ingeniero Ambrosio L.V. Taravella International Airport,Córdoba,Argentina
+BOG,El Dorado International Airport,Bogotá,Colombia
+CLO,Alfonso Bonilla Aragón International Airport,Cali,Colombia
+MDE,José María Córdova International Airport,Medellín,Colombia
+LIM,Jorge Chávez International Airport,Lima,Peru
+SCL,Arturo Merino Benítez International Airport,Santiago,Chile
+UIO,Mariscal Sucre International Airport,Quito,Ecuador
+GYE,José Joaquín de Olmedo International Airport,Guayaquil,Ecuador
+PTY,Tocumen International Airport,Panama City,Panama
+SJO,Juan Santamaría International Airport,San José,Costa Rica
+JNB,O.R. Tambo International Airport,Johannesburg,South Africa
+CPT,Cape Town International Airport,Cape Town,South Africa
+DUR,King Shaka International Airport,Durban,South Africa
+NBO,Jomo Kenyatta International Airport,Nairobi,Kenya
+ADD,Addis Ababa Bole International Airport,Addis Ababa,Ethiopia
+LOS,Murtala Muhammed International Airport,Lagos,Nigeria
+ACC,Kotoka International Airport,Accra,Ghana
+DKR,Blaise Diagne International Airport,Dakar,Senegal
+CMN,Mohammed V International Airport,Casablanca,Morocco
+TUN,Tunis-Carthage International Airport,Tunis,Tunisia
+ALG,Houari Boumediene Airport,Algiers,Algeria
