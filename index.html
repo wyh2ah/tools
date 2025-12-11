@@ -5,189 +5,480 @@
     <meta charset="utf-8">
     <meta content="initial-scale=1, shrink-to-fit=no, width=device-width" name="viewport">
     <meta http-equiv="Content-Type" content="text/html;charset=UTF-8">
-    <link rel="stylesheet" href="res/material.icons.css">
-    <link rel="stylesheet" href="res/material.indigo-pink.min.css">
-    <script defer src="res/material.min.js"></script>
-    <title>National Utilities</title>
+    <title>Tool Box</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
 </head>
 
-<body style="background-color: white;">
-
+<body>
     <style>
-        .my-center {
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe, #00f2fe, #43e97b, #fa709a);
+            background-size: 400% 400%;
+            animation: gradientShift 15s ease infinite;
+            min-height: 100vh;
+            overflow-x: hidden;
+            position: relative;
+        }
+
+        @keyframes gradientShift {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        /* Floating particles */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-image: 
+                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
+                radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
+            pointer-events: none;
+            animation: particleFloat 25s ease-in-out infinite;
+        }
+
+        @keyframes particleFloat {
+            0%, 100% { opacity: 0.4; transform: translateY(0); }
+            50% { opacity: 0.7; transform: translateY(-30px); }
+        }
+
+        /* Main content */
+        main {
+            padding: 80px 2rem 60px;
+            min-height: 100vh;
+        }
+
+        .page-title {
+            text-align: center;
+            color: #ffffff;
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.5px;
+            animation: fadeInUp 0.8s ease-out;
+            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .page-subtitle {
+            text-align: center;
+            color: rgba(255, 255, 255, 0.9);
+            font-size: 1.1rem;
+            font-weight: 400;
+            margin-bottom: 1rem;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .nav-links {
+            text-align: center;
+            margin-bottom: 4rem;
+            animation: fadeInUp 0.8s ease-out 0.3s both;
+        }
+
+        .nav-links a {
+            color: rgba(255, 255, 255, 0.85);
+            text-decoration: none;
+            font-size: 1.05rem;
+            margin: 0 1.5rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: -4px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: rgba(255, 255, 255, 0.9);
+            transition: width 0.3s ease;
+        }
+
+        .nav-links a:hover {
+            color: #ffffff;
+        }
+
+        .nav-links a:hover::after {
+            width: 100%;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Cards container */
+        .cards-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            animation: fadeIn 1s ease-out 0.4s both;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; }
+            to { opacity: 1; }
+        }
+
+        /* Glass card */
+        .glass-card {
+            background: rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(40px) saturate(180%);
+            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            border-radius: 16px;
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            overflow: hidden;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            animation: cardSlideIn 0.6s ease-out backwards;
+            position: relative;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
             display: flex;
-            flex-direction: row;
+            flex-direction: column;
+        }
+
+        .glass-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .glass-card:hover::before {
+            left: 100%;
+        }
+
+        @keyframes cardSlideIn {
+            from {
+                opacity: 0;
+                transform: translateY(50px) scale(0.9);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .glass-card:nth-child(1) { animation-delay: 0.1s; }
+        .glass-card:nth-child(2) { animation-delay: 0.2s; }
+        .glass-card:nth-child(3) { animation-delay: 0.3s; }
+        .glass-card:nth-child(4) { animation-delay: 0.4s; }
+        .glass-card:nth-child(5) { animation-delay: 0.5s; }
+
+        .glass-card:hover {
+            transform: translateY(-8px);
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
+            border-color: rgba(255, 255, 255, 0.3);
+        }
+
+        .card-header {
+            padding: 3rem 2rem 2rem;
+            min-height: auto;
+            display: flex;
+            align-items: center;
             justify-content: center;
-            margin-top: 20px;
+            position: relative;
+            overflow: hidden;
+            background: rgba(0, 0, 0, 0.25);
+            backdrop-filter: blur(20px);
+            -webkit-backdrop-filter: blur(20px);
+        }
+
+
+
+        .card-title {
+            color: #ffffff;
+            font-size: 2rem;
+            font-weight: 700;
+            z-index: 1;
+            position: relative;
+            transition: transform 0.3s ease;
+            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        .glass-card:hover .card-title {
+            transform: scale(1.05);
+        }
+
+        .card-body {
+            padding: 1.5rem 2rem;
+            color: rgba(255, 255, 255, 0.9);
+            line-height: 1.7;
+            font-weight: 400;
+            font-size: 0.95rem;
+            flex-grow: 1;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+        }
+
+        .card-actions {
+            padding: 1.5rem 2rem 2rem;
+            display: flex;
+            gap: 1rem;
             flex-wrap: wrap;
-            /* max-width: 1200px; */
-            /* align-items: flex-start; */
+            justify-content: center;
+            margin-top: auto;
+        }
+
+        .btn {
+            padding: 0.75rem 1.8rem;
+            background: rgba(0, 0, 0, 0.3);
+            color: white;
+            text-decoration: none;
+            border-radius: 10px;
+            font-weight: 600;
+            font-size: 0.9rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+            backdrop-filter: blur(10px);
+            -webkit-backdrop-filter: blur(10px);
+        }
+
+        .btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s ease;
+        }
+
+        .btn:hover::before {
+            left: 100%;
+        }
+
+        .btn span {
+            position: relative;
+            z-index: 1;
+        }
+
+        .btn:hover {
+            background: rgba(0, 0, 0, 0.5);
+            transform: translateY(-2px);
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+            border-color: rgba(255, 255, 255, 0.4);
+        }
+
+        .btn:active {
+            transform: translateY(0);
+        }
+
+        /* Footer */
+        footer {
+            text-align: center;
+            padding: 2rem;
+            color: rgba(255, 255, 255, 0.8);
+            font-weight: 500;
+            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        /* Responsive */
+        @media (max-width: 768px) {
+            main {
+                padding: 60px 1rem 40px;
+            }
+
+            .page-title {
+                font-size: 2.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 1rem;
+            }
+
+            .nav-links {
+                margin-bottom: 3rem;
+            }
+
+            .nav-links a {
+                display: block;
+                margin: 0.8rem 0;
+            }
+
+            .cards-container {
+                grid-template-columns: 1fr;
+                padding: 0 1rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .page-title {
+                font-size: 2rem;
+            }
+
+            .card-title {
+                font-size: 1.5rem;
+            }
+
+            .btn {
+                padding: 0.6rem 1.2rem;
+                font-size: 0.85rem;
+            }
         }
     </style>
 
-    <!-- Always shows a header, even in smaller screens. -->
-    <div class="mdl-layout mdl-js-layout mdl-layout--fixed-header">
-        <header class="mdl-layout__header">
-            <div class="mdl-layout__header-row">
-                <span class="mdl-layout-title"></span>
-                <div class="mdl-layout-spacer"></div>
-                <nav class="mdl-navigation mdl-layout--large-screen-only">
-                    <a class="mdl-navigation__link" href="/">Introduction</a>
-                    <a class="mdl-navigation__link" href="https://www.billhu.us">Blog</a>
-                    <a class="mdl-navigation__link" href="https://www.wyyyh.com">Portfolio</a>
-                    <a class="mdl-navigation__link" href="https://github.com/godieu">GitHub</a>
-                </nav>
-            </div>
-        </header>
-        <div class="mdl-layout__drawer">
-            <span class="mdl-layout-title">Utilities</span>
-            <nav class="mdl-navigation">
-                <a class="mdl-navigation__link" href="/">Introduction</a>
-                <a class="mdl-navigation__link" href="https://www.billhu.us">Blog</a>
-                <a class="mdl-navigation__link" href="https://www.wyyyh.com">Portfolio</a>
-                <a class="mdl-navigation__link" href="https://github.com/godieu">GitHub</a>
-            </nav>
+    <!-- Main Content -->
+    <main>
+        <h1 class="page-title">Tool Box</h1>
+        <p class="page-subtitle">A collection of useful web-based utilities</p>
+        <div class="nav-links">
+            <a href="/">Introduction</a>
+            <a href="https://www.billhu.us">Blog</a>
+            <a href="https://www.wyyyh.com">Portfolio</a>
+            <a href="https://github.com/wyh2ah">GitHub</a>
         </div>
-        <main class="mdl-layout__content">
-            <div class="page-content">
-                <!-- Your content goes here -->
-                <style>
-                    .demo-card-wide {
-                        margin: 20px;
-                    }
 
-                    .demo-card-wide.mdl-card {
-                        width: 512px;
-                        max-width: 80%;
-                    }
-
-                    .demo-card-wide>.mdl-card__title {
-                        color: #fff;
-                        height: 176px;
-                        /* background: url('res/welcome_card.jpg') center / cover; */
-                        background: #8f4cc7;
-                    }
-
-                    .demo-card-wide>.mdl-card__menu {
-                        color: #fff;
-                    }
-                </style>
-
-                <div class="my-center">
-                    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                        <div class="mdl-card__title">
-                            <h2 class="mdl-card__title-text">Minesweeper</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            Windows-XP-style Minesweeper in your browser. Implemented in JavaScript.
-                        </div>
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/minesweeper/#200">
-                                Play
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                        <div class="mdl-card__title" style="background-color: #46B6AC;">
-                            <h2 class="mdl-card__title-text">Dino</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            Chrome dino game. Implemented in JavaScript.
-                        </div>
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/dino">
-                                Play
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                        <div class="mdl-card__title" style="background-color: #dd608a;">
-                            <h2 class="mdl-card__title-text">IEEE754 converter</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            32-bit single precision float number converter between binary, decimal and hexadecimal. Implemented in JavaScript.
-                        </div>
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/ieee754">
-                                View
-                            </a>
-
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="https://github.com/billhu0/IEEE754-converter">
-                                GitHub Link
-                            </a>
-                        </div>
-                    </div>
-
-                    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                        <div class="mdl-card__title" style="background-color: #ebaa56;">
-                            <h2 class="mdl-card__title-text">Venus Simulator</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            Venus, a RISC-V assembly code Simulator.
-                        </div>
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="https://venus.billhu.us">
-                                View
-                            </a>
-                            <!-- <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="https://venus.cs61c.org">
-                                CS61C venus link
-                            </a> -->
-                        </div>
-                    </div>
-
-                    <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                        <div class="mdl-card__title" style="background-color: #d84545;">
-                            <h2 class="mdl-card__title-text">VSBM</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            Trigonometric and inverse trigonometric functions test. Created by cznull@bilibili.
-                        </div>
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="/vsbm">
-                                Stress GPU
-                            </a>
-                        </div>
-                    </div>
-
-                    <!-- <div class="demo-card-wide mdl-card mdl-shadow--2dp">
-                        <div class="mdl-card__title" style="background-color: #f7e69d;">
-                            <h2 class="mdl-card__title-text">Venus Simulator (阉割版)</h2>
-                        </div>
-                        <div class="mdl-card__supporting-text">
-                            Venus, a RISC-V assembly code Simulator.
-                        </div>
-                        <div class="mdl-card__actions mdl-card--border">
-                            <a class="mdl-button mdl-button--colored mdl-js-button mdl-js-ripple-effect" href="https://venus1.billhu.cn">
-                                View
-                            </a>
-                        </div>
-                    </div> -->
+        <div class="cards-container">
+            <!-- Minesweeper Card -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <h2 class="card-title">Minesweeper</h2>
                 </div>
-
-                <style>
-                    footer{
-                        display: flex;
-                        justify-content: center;
-                        align-items: center;
-                        margin-top: 20px;
-                    }
-    
-                    footer p{
-                        width: max-content;
-                    }
-                </style>
-    
-                <footer>
-                    <p>Designed By <a href="https://www.billhu.us">Bill Hu, University of Pennsylvania, PA</a>.</p>
-                    <p>This webpage is still under construction.</p>
-                </footer>
-
+                <div class="card-body">
+                    Windows-XP-style Minesweeper in your browser. Implemented in JavaScript.
+                </div>
+                <div class="card-actions">
+                    <a class="btn" href="/minesweeper/#200">
+                        <span>Play</span>
+                    </a>
+                </div>
             </div>
+
+            <!-- Dino Card -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <h2 class="card-title">Dino</h2>
+                </div>
+                <div class="card-body">
+                    Chrome dino game. Implemented in JavaScript.
+                </div>
+                <div class="card-actions">
+                    <a class="btn" href="/dino">
+                        <span>Play</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- IEEE754 Card -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <h2 class="card-title">IEEE754 Converter</h2>
+                </div>
+                <div class="card-body">
+                    32-bit single precision float number converter between binary, decimal and hexadecimal. Implemented in JavaScript.
+                </div>
+                <div class="card-actions">
+                    <a class="btn" href="/ieee754">
+                        <span>View</span>
+                    </a>
+                    <a class="btn" href="https://github.com/billhu0/IEEE754-converter">
+                        <span>GitHub Link</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- Venus Simulator Card -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <h2 class="card-title">Venus Simulator</h2>
+                </div>
+                <div class="card-body">
+                    Venus, a RISC-V assembly code Simulator.
+                </div>
+                <div class="card-actions">
+                    <a class="btn" href="https://venus.billhu.us">
+                        <span>View</span>
+                    </a>
+                </div>
+            </div>
+
+            <!-- VSBM Card -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <h2 class="card-title">VSBM</h2>
+                </div>
+                <div class="card-body">
+                    Trigonometric and inverse trigonometric functions test. Created by cznull@bilibili.
+                </div>
+                <div class="card-actions">
+                    <a class="btn" href="/vsbm">
+                        <span>Stress GPU</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Tool Box. All rights reserved.</p>
+    </footer>
+
+    <script>
+        // Add parallax effect to cards
+        let isHovering = false;
+        
+        document.addEventListener('mousemove', function(e) {
+            if (isHovering) return;
             
-        </main>
-    </div>
+            const cards = document.querySelectorAll('.glass-card');
+            const mouseX = e.clientX / window.innerWidth;
+            const mouseY = e.clientY / window.innerHeight;
+            
+            cards.forEach((card, index) => {
+                const depth = (index + 1) * 3;
+                const moveX = (mouseX - 0.5) * depth;
+                const moveY = (mouseY - 0.5) * depth;
+                
+                card.style.transform = `translate(${moveX}px, ${moveY}px)`;
+            });
+        });
+
+        // Reset card positions on hover
+        document.querySelectorAll('.glass-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                isHovering = true;
+                this.style.transform = 'translateY(-8px)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                isHovering = false;
+                this.style.transform = '';
+            });
+        });
+    </script>
 </body>
 
 </html>
