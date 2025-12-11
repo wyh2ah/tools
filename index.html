@@ -21,39 +21,15 @@
 
         body {
             font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
-            background: linear-gradient(-45deg, #667eea, #764ba2, #f093fb, #4facfe, #00f2fe, #43e97b, #fa709a);
-            background-size: 400% 400%;
-            animation: gradientShift 15s ease infinite;
+            background: #ffffff;
             min-height: 100vh;
             overflow-x: hidden;
             position: relative;
         }
 
-        @keyframes gradientShift {
-            0% { background-position: 0% 50%; }
-            50% { background-position: 100% 50%; }
-            100% { background-position: 0% 50%; }
-        }
-
         /* Floating particles */
         body::before {
-            content: '';
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-image: 
-                radial-gradient(circle at 20% 80%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 80% 20%, rgba(255, 255, 255, 0.1) 0%, transparent 50%),
-                radial-gradient(circle at 40% 40%, rgba(255, 255, 255, 0.08) 0%, transparent 50%);
-            pointer-events: none;
-            animation: particleFloat 25s ease-in-out infinite;
-        }
-
-        @keyframes particleFloat {
-            0%, 100% { opacity: 0.4; transform: translateY(0); }
-            50% { opacity: 0.7; transform: translateY(-30px); }
+            display: none;
         }
 
         /* Main content */
@@ -64,23 +40,21 @@
 
         .page-title {
             text-align: center;
-            color: #ffffff;
+            color: #000000;
             font-size: 3.5rem;
             font-weight: 700;
             margin-bottom: 0.5rem;
             letter-spacing: -0.5px;
             animation: fadeInUp 0.8s ease-out;
-            text-shadow: 0 2px 20px rgba(0, 0, 0, 0.2);
         }
 
         .page-subtitle {
             text-align: center;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(0, 0, 0, 0.6);
             font-size: 1.1rem;
             font-weight: 400;
             margin-bottom: 1rem;
             animation: fadeInUp 0.8s ease-out 0.2s both;
-            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
         }
 
         .nav-links {
@@ -90,7 +64,7 @@
         }
 
         .nav-links a {
-            color: rgba(255, 255, 255, 0.85);
+            color: rgba(0, 0, 0, 0.7);
             text-decoration: none;
             font-size: 1.05rem;
             margin: 0 1.5rem;
@@ -106,12 +80,12 @@
             left: 0;
             width: 0;
             height: 2px;
-            background: rgba(255, 255, 255, 0.9);
+            background: #000000;
             transition: width 0.3s ease;
         }
 
         .nav-links a:hover {
-            color: #ffffff;
+            color: #000000;
         }
 
         .nav-links a:hover::after {
@@ -138,6 +112,7 @@
             grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
             gap: 2rem;
             animation: fadeIn 1s ease-out 0.4s both;
+            isolation: isolate;
         }
 
         @keyframes fadeIn {
@@ -147,18 +122,20 @@
 
         /* Glass card */
         .glass-card {
-            background: rgba(0, 0, 0, 0.3);
-            backdrop-filter: blur(40px) saturate(180%);
-            -webkit-backdrop-filter: blur(40px) saturate(180%);
+            background: #f5f5f7;
             border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.15);
+            border: 1px solid rgba(0, 0, 0, 0.25);
             overflow: hidden;
-            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            transition: transform 0.3s ease-out,
+                        box-shadow 0.3s ease-out,
+                        border-color 0.3s ease-out;
             animation: cardSlideIn 0.6s ease-out backwards;
             position: relative;
-            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
             display: flex;
             flex-direction: column;
+            transform: translate3d(0, 0, 0);
+            backface-visibility: hidden;
         }
 
         .glass-card::before {
@@ -168,7 +145,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
+            background: linear-gradient(90deg, transparent, rgba(0, 0, 0, 0.02), transparent);
             transition: left 0.5s ease;
         }
 
@@ -192,11 +169,12 @@
         .glass-card:nth-child(3) { animation-delay: 0.3s; }
         .glass-card:nth-child(4) { animation-delay: 0.4s; }
         .glass-card:nth-child(5) { animation-delay: 0.5s; }
+        .glass-card:nth-child(6) { animation-delay: 0.6s; }
 
         .glass-card:hover {
             transform: translateY(-8px);
-            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.4);
-            border-color: rgba(255, 255, 255, 0.3);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            border-color: rgba(0, 0, 0, 0.4);
         }
 
         .card-header {
@@ -207,21 +185,18 @@
             justify-content: center;
             position: relative;
             overflow: hidden;
-            background: rgba(0, 0, 0, 0.25);
-            backdrop-filter: blur(20px);
-            -webkit-backdrop-filter: blur(20px);
+            background: #f5f5f7;
         }
 
 
 
         .card-title {
-            color: #ffffff;
+            color: #000000;
             font-size: 2rem;
             font-weight: 700;
             z-index: 1;
             position: relative;
             transition: transform 0.3s ease;
-            text-shadow: 0 2px 15px rgba(0, 0, 0, 0.2);
         }
 
         .glass-card:hover .card-title {
@@ -230,12 +205,12 @@
 
         .card-body {
             padding: 1.5rem 2rem;
-            color: rgba(255, 255, 255, 0.9);
+            color: rgba(0, 0, 0, 0.7);
             line-height: 1.7;
             font-weight: 400;
             font-size: 0.95rem;
             flex-grow: 1;
-            border-bottom: 1px solid rgba(255, 255, 255, 0.25);
+            border-bottom: 1px solid rgba(0, 0, 0, 0.2);
         }
 
         .card-actions {
@@ -249,19 +224,17 @@
 
         .btn {
             padding: 0.75rem 1.8rem;
-            background: rgba(0, 0, 0, 0.3);
-            color: white;
+            background: #007aff;
+            color: #ffffff;
             text-decoration: none;
-            border-radius: 10px;
+            border-radius: 50px;
             font-weight: 600;
             font-size: 0.9rem;
-            border: 1px solid rgba(255, 255, 255, 0.2);
+            border: 1px solid #007aff;
             transition: all 0.3s ease;
             position: relative;
             overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
-            backdrop-filter: blur(10px);
-            -webkit-backdrop-filter: blur(10px);
+            box-shadow: 0 1px 3px rgba(0, 122, 255, 0.2);
         }
 
         .btn::before {
@@ -271,7 +244,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.2), transparent);
             transition: left 0.5s ease;
         }
 
@@ -285,10 +258,24 @@
         }
 
         .btn:hover {
-            background: rgba(0, 0, 0, 0.5);
+            background: #0051d5;
             transform: translateY(-2px);
-            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
-            border-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.3);
+            border-color: #0051d5;
+        }
+
+        .btn-secondary {
+            background: #ffffff;
+            color: #007aff;
+            border: 1px solid #007aff;
+            box-shadow: 0 1px 3px rgba(0, 0, 0, 0.05);
+        }
+
+        .btn-secondary:hover {
+            background: #f8f8f8;
+            border-color: #0051d5;
+            color: #0051d5;
+            box-shadow: 0 4px 12px rgba(0, 122, 255, 0.2);
         }
 
         .btn:active {
@@ -299,9 +286,8 @@
         footer {
             text-align: center;
             padding: 2rem;
-            color: rgba(255, 255, 255, 0.8);
+            color: rgba(0, 0, 0, 0.5);
             font-weight: 500;
-            text-shadow: 0 1px 10px rgba(0, 0, 0, 0.15);
         }
 
         /* Responsive */
@@ -312,10 +298,12 @@
 
             .page-title {
                 font-size: 2.5rem;
+                margin-bottom: 0.75rem;
             }
 
             .page-subtitle {
                 font-size: 1rem;
+                margin-bottom: 1.5rem;
             }
 
             .nav-links {
@@ -323,27 +311,90 @@
             }
 
             .nav-links a {
-                display: block;
-                margin: 0.8rem 0;
+                display: inline-block;
+                margin: 0.5rem 0.75rem;
+                font-size: 0.95rem;
             }
 
             .cards-container {
                 grid-template-columns: 1fr;
                 padding: 0 1rem;
+                gap: 1.5rem;
+            }
+
+            .card-header {
+                padding: 2.5rem 1.5rem 1.5rem;
+            }
+
+            .card-title {
+                font-size: 1.75rem;
+            }
+
+            .card-body {
+                padding: 1.25rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            .card-actions {
+                padding: 1.25rem 1.5rem 1.5rem;
+                gap: 0.75rem;
             }
         }
 
         @media (max-width: 480px) {
+            main {
+                padding: 40px 0.75rem 30px;
+            }
+
             .page-title {
                 font-size: 2rem;
+                margin-bottom: 0.5rem;
+            }
+
+            .page-subtitle {
+                font-size: 0.9rem;
+            }
+
+            .nav-links {
+                margin-bottom: 2rem;
+            }
+
+            .nav-links a {
+                font-size: 0.85rem;
+                margin: 0.4rem 0.5rem;
+            }
+
+            .cards-container {
+                gap: 1.25rem;
+            }
+
+            .card-header {
+                padding: 2rem 1.25rem 1.25rem;
             }
 
             .card-title {
                 font-size: 1.5rem;
             }
 
+            .card-body {
+                padding: 1rem 1.25rem;
+                font-size: 0.85rem;
+            }
+
+            .card-actions {
+                padding: 1rem 1.25rem 1.25rem;
+                flex-direction: column;
+                gap: 0.5rem;
+            }
+
             .btn {
-                padding: 0.6rem 1.2rem;
+                width: 100%;
+                padding: 0.75rem 1.5rem;
+                font-size: 0.9rem;
+            }
+
+            footer {
+                padding: 1.5rem 1rem;
                 font-size: 0.85rem;
             }
         }
@@ -361,6 +412,21 @@
         </div>
 
         <div class="cards-container">
+            <!-- AM4 Calculator Card -->
+            <div class="glass-card">
+                <div class="card-header">
+                    <h2 class="card-title">AM4 Calculator</h2>
+                </div>
+                <div class="card-body">
+                    Airline Manager 4 seat configuration calculator. Calculate optimal cabin distribution based on route demand.
+                </div>
+                <div class="card-actions">
+                    <a class="btn" href="/am4calc">
+                        <span>Calculate</span>
+                    </a>
+                </div>
+            </div>
+
             <!-- Minesweeper Card -->
             <div class="glass-card">
                 <div class="card-header">
@@ -403,7 +469,7 @@
                     <a class="btn" href="/ieee754">
                         <span>View</span>
                     </a>
-                    <a class="btn" href="https://github.com/billhu0/IEEE754-converter">
+                    <a class="btn btn-secondary" href="https://github.com/billhu0/IEEE754-converter">
                         <span>GitHub Link</span>
                     </a>
                 </div>
