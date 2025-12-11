@@ -468,7 +468,7 @@
         }
 
         .airport-name.valid {
-            color: #34c759;
+            color: #0051d5;
             font-weight: 500;
         }
 
@@ -986,7 +986,7 @@
         function saveRoute() {
             // Validate airports
             if (!currentAirports.departure || !currentAirports.arrival) {
-                alert('⚠️ Please enter valid departure and arrival airport codes');
+                alert('Please enter valid departure and arrival airport codes');
                 return;
             }
 
@@ -1027,7 +1027,7 @@
             loadSavedRoutes();
             
             // Show success feedback
-            alert('✅ Route saved successfully!');
+            alert('Route saved successfully!');
         }
 
         // Load saved routes from localStorage
@@ -1043,7 +1043,7 @@
             routeList.innerHTML = routes.map(route => `
                 <div class="route-item">
                     <div class="route-info">
-                        <div class="route-name">✈️ ${escapeHtml(route.name)}</div>
+                        <div class="route-name">${escapeHtml(route.name)}</div>
                         <div class="route-details">
                             ${route.departure ? route.departure.code : ''} → ${route.arrival ? route.arrival.code : ''} | ${route.aircraft}<br>
                             Demand: E${route.economyDemand}/B${route.businessDemand}/F${route.firstDemand} | Config: ${route.resultFirst}F/${route.resultBusiness}B/${route.resultEconomy}E<br>
@@ -1103,7 +1103,7 @@
             // Scroll to top
             window.scrollTo({ top: 0, behavior: 'smooth' });
             
-            alert('✅ Route loaded! Click Calculate to see results.');
+            alert('Route loaded! Click Calculate to see results.');
         }
 
         // Delete a saved route
