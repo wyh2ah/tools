@@ -1368,7 +1368,7 @@
             if (routeLengthKm <= 0 || speedKph <= 0) return 0;
             const flightHours = routeLengthKm / speedKph; // one-way time in hours
             if (flightHours === 0) return 0;
-            return Math.max(1, Math.floor(24 / flightHours));
+            return Math.max(1, Math.ceil(24 / flightHours));
         }
 
         function calculateRecommendation(showErrors = true) {
@@ -1412,7 +1412,7 @@
             Object.values(aircraftData).forEach(ac => {
                 const flightHours = routeLength / ac.speed;
                 if (flightHours <= 0 || !isFinite(flightHours)) return;
-                const flightsPerDay = Math.max(1, Math.floor(24 / flightHours));
+                const flightsPerDay = Math.max(1, Math.ceil(24 / flightHours));
                 const targetPerFlight = Math.max(1, Math.floor(weightedDemand / flightsPerDay));
 
                 if (ac.pax <= targetPerFlight) {
