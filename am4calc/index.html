@@ -194,7 +194,33 @@
             font-weight: 600;
             cursor: pointer;
             transition: all 0.3s ease;
-            margin-top: 1rem;
+            margin-top: 1.25rem;
+            margin-bottom: 1.25rem;
+        }
+
+        .btn-recommend {
+            width: 100%;
+            padding: 1rem 2rem;
+            background: #0a84ff;
+            color: white;
+            border: 1px solid #0a84ff;
+            border-radius: 50px;
+            font-size: 1.05rem;
+            font-weight: 600;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin: 1rem 0 1.25rem 0;
+        }
+
+        .btn-recommend:hover {
+            background: #0068d1;
+            border-color: #0068d1;
+            transform: translateY(-2px);
+            box-shadow: 0 4px 16px rgba(0, 104, 209, 0.3);
+        }
+
+        .btn-recommend:active {
+            transform: translateY(0);
         }
 
         .btn-calculate:hover {
@@ -376,6 +402,10 @@
             flex: 1;
         }
 
+        .route-info-section {
+            margin-top: 1.5rem;
+        }
+
         .route-name {
             color: #000000;
             font-weight: 600;
@@ -404,6 +434,34 @@
             font-weight: 500;
             cursor: pointer;
             transition: background 0.3s ease;
+        }
+
+        .metric-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(160px, 1fr));
+            gap: 0.75rem;
+            margin-top: 0.5rem;
+        }
+
+        .metric-card {
+            background: #ffffff;
+            border: 1px solid rgba(0, 0, 0, 0.15);
+            border-radius: 10px;
+            padding: 0.75rem 0.9rem;
+            display: flex;
+            flex-direction: column;
+            gap: 0.25rem;
+        }
+
+        .metric-label {
+            font-size: 0.85rem;
+            color: rgba(0, 0, 0, 0.6);
+        }
+
+        .metric-value {
+            font-size: 1.05rem;
+            font-weight: 700;
+            color: #000000;
         }
 
         .btn-delete:hover {
@@ -716,28 +774,6 @@
         </div>
 
         <div class="form-section">
-            <h2 class="section-title">Route Information</h2>
-            <div class="airport-inputs">
-                <div class="airport-input-wrapper">
-                    <div class="form-group">
-                        <label for="departureAirport">Departure Airport</label>
-                        <input type="text" id="departureAirport" class="airport-input" placeholder="e.g., LAX" maxlength="3">
-                        <div class="autocomplete-dropdown" id="departureDropdown"></div>
-                    </div>
-                    <div class="airport-name" id="departureName"></div>
-                </div>
-                <div class="airport-input-wrapper">
-                    <div class="form-group">
-                        <label for="arrivalAirport">Arrival Airport</label>
-                        <input type="text" id="arrivalAirport" class="airport-input" placeholder="e.g., JFK" maxlength="3">
-                        <div class="autocomplete-dropdown" id="arrivalDropdown"></div>
-                    </div>
-                    <div class="airport-name" id="arrivalName"></div>
-                </div>
-            </div>
-        </div>
-
-        <div class="form-section">
             <h2 class="section-title">Route Demand</h2>
             <div class="demand-inputs">
                 <div class="form-group">
@@ -753,6 +789,43 @@
                     <input type="number" id="firstDemand" placeholder="50" min="0">
                 </div>
             </div>
+            <div class="form-group">
+                <label for="routeLength">Route Length (km)</label>
+                <input type="number" id="routeLength" placeholder="e.g., 1200" min="0" step="0.1">
+            </div>
+        </div>
+
+        <button class="btn-recommend" id="btnRecommend">Show Recommended Aircraft</button>
+
+        <div class="result-section" id="recommendationSection" style="display: none; margin-top: 1rem;">
+            <h3 class="result-title" style="margin-bottom: 1rem;">Route Recommendation</h3>
+            <div class="metric-grid">
+                <div class="metric-card">
+                    <div class="metric-label">Route Length (km)</div>
+                    <div class="metric-value" id="recRouteLength">-</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Weighted Demand</div>
+                    <div class="metric-value" id="recWeightedDemand">-</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Max Flights/Day</div>
+                    <div class="metric-value" id="recFlightsPerDay">-</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Single Flight Time</div>
+                    <div class="metric-value" id="recFlightTime">-</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Target PAX/Flight</div>
+                    <div class="metric-value" id="recTargetPerFlight">-</div>
+                </div>
+                <div class="metric-card">
+                    <div class="metric-label">Suggested Aircraft</div>
+                    <div class="metric-value" id="recAircraft">-</div>
+                </div>
+            </div>
+            <div class="error-message" id="recommendationError" style="margin-top: 0.75rem;"></div>
         </div>
 
         <div class="form-section">
@@ -761,15 +834,15 @@
                 <label for="aircraftSelect">Select Aircraft</label>
                 <select id="aircraftSelect">
                     <option value="">Choose an aircraft</option>
-                    <option value="350">Airbus A350-1000 (350 PAX)</option>
-                    <option value="600">Airbus A380 (600 PAX)</option>
-                    <option value="184">Boeing 737-800 (184 PAX)</option>
-                    <option value="225">Boeing 737 Max 10 (225 PAX)</option>
-                    <option value="467">Boeing 747-8 (467 PAX)</option>
-                    <option value="250">Boeing 787-8 (250 PAX)</option>
-                    <option value="440">Boeing 787-10 (440 PAX)</option>
-                    <option value="90">Bombardier CRJ-900ER (90 PAX)</option>
-                    <option value="168">COMAC C919 (168 PAX)</option>
+                    <option value="350" data-speed="905">Airbus A350-1000 (350 PAX, 905 kph)</option>
+                    <option value="600" data-speed="945">Airbus A380 (600 PAX, 945 kph)</option>
+                    <option value="184" data-speed="842">Boeing 737-800 (184 PAX, 842 kph)</option>
+                    <option value="225" data-speed="861">Boeing 737 Max 10 (225 PAX, 861 kph)</option>
+                    <option value="467" data-speed="933">Boeing 747-8 (467 PAX, 933 kph)</option>
+                    <option value="250" data-speed="913">Boeing 787-8 (250 PAX, 913 kph)</option>
+                    <option value="440" data-speed="913">Boeing 787-10 (440 PAX, 913 kph)</option>
+                    <option value="90" data-speed="860">Bombardier CRJ-900ER (90 PAX, 860 kph)</option>
+                    <option value="168" data-speed="918">COMAC C919 (168 PAX, 918 kph)</option>
                     <option value="custom">Custom PAX</option>
                 </select>
             </div>
@@ -808,12 +881,63 @@
                 Demand Ratio: <span id="demandRatio">-</span><br>
                 Seat Ratio: <span id="seatRatio">-</span>
             </div>
+            <div class="result-info" style="margin-top: 1rem;">
+                <strong>Route Ops Suggestion:</strong>
+                <div class="metric-grid">
+                    <div class="metric-card">
+                        <div class="metric-label">Route Length (km)</div>
+                        <div class="metric-value" id="routeLengthDisplay">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Weighted Demand</div>
+                        <div class="metric-value" id="weightedDemand">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Max Flights/Day</div>
+                        <div class="metric-value" id="flightsPerDay">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Single Flight Time</div>
+                        <div class="metric-value" id="routeFlightTime">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Target PAX/Flight</div>
+                        <div class="metric-value" id="targetPaxPerFlight">-</div>
+                    </div>
+                    <div class="metric-card">
+                        <div class="metric-label">Suggested Aircraft</div>
+                        <div class="metric-value" id="suggestedAircraft">-</div>
+                    </div>
+                </div>
+            </div>
 
             <div class="save-route-section">
                 <h3>Save Route Configuration</h3>
                 <div class="route-name-input">
                     <input type="text" id="routeName" placeholder="Optional: Custom name (auto: DEP-ARR)" maxlength="50">
                     <button class="btn-save-route" onclick="saveRoute()" id="btnSaveRoute">Save Route</button>
+                </div>
+            </div>
+        </div>
+
+        <div class="form-section route-info-section">
+            <h2 class="section-title">Route Information</h2>
+            <div class="airport-inputs">
+                <div class="airport-input-wrapper">
+                    <div class="form-group">
+                        <label for="departureAirport">Departure Airport</label>
+                        <input type="text" id="departureAirport" class="airport-input" placeholder="e.g., LAX" maxlength="3">
+                        <div class="autocomplete-dropdown" id="departureDropdown"></div>
+                    </div>
+                    <div class="airport-name" id="departureName"></div>
+                </div>
+                <div class="airport-input-wrapper">
+                    <div class="form-group">
+                        <label for="arrivalAirport">Arrival Airport</label>
+                        <input type="text" id="arrivalAirport" class="airport-input" placeholder="e.g., JFK" maxlength="3">
+                        <div class="autocomplete-dropdown" id="arrivalDropdown"></div>
+                    </div>
+                    <div class="airport-name" id="arrivalName"></div>
                 </div>
             </div>
         </div>
@@ -829,6 +953,20 @@
     <script>
         // Airport database - loaded from CSV
         let airports = [];
+        // Aircraft specs with speed (kph)
+        const aircraftData = {
+            '440': { name: 'Airbus A330-900NEO', pax: 440, speed: 880 },
+            '300': { name: 'Airbus A350-900ULR', pax: 300, speed: 932 },
+            '350': { name: 'Airbus A350-1000', pax: 350, speed: 945 },
+            '600': { name: 'Airbus A380', pax: 600, speed: 945 },
+            '184': { name: 'Boeing 737-800', pax: 184, speed: 780 },
+            '225': { name: 'Boeing 737 Max 10', pax: 225, speed: 839 },
+            '467': { name: 'Boeing 747-8', pax: 467, speed: 988 },
+            '250': { name: 'Boeing 787-8', pax: 250, speed: 903 },
+            '440': { name: 'Boeing 787-10', pax: 440, speed: 945 },
+            '90': { name: 'Bombardier CRJ-900ER', pax: 90, speed: 850 },
+            '168': { name: 'COMAC C919', pax: 168, speed: 970 }
+        };
 
         // Load airports from CSV file
         async function loadAirports() {
@@ -996,6 +1134,7 @@
             const routeName = document.getElementById('routeName').value.trim();
             const autoRouteName = `${currentAirports.departure.code}-${currentAirports.arrival.code}`;
             const finalRouteName = routeName || autoRouteName;
+            const routeLength = parseFloat(document.getElementById('routeLength').value) || 0;
 
             const route = {
                 id: Date.now(),
@@ -1010,6 +1149,11 @@
                 resultFirst: parseInt(document.getElementById('resultFirst').textContent) || 0,
                 resultBusiness: parseInt(document.getElementById('resultBusiness').textContent) || 0,
                 resultEconomy: parseInt(document.getElementById('resultEconomy').textContent) || 0,
+                routeLength: routeLength,
+                weightedDemand: parseInt(document.getElementById('weightedDemand').textContent) || 0,
+                flightsPerDay: parseInt(document.getElementById('flightsPerDay').textContent) || 0,
+                targetPaxPerFlight: parseInt(document.getElementById('targetPaxPerFlight').textContent) || 0,
+                suggestedAircraft: document.getElementById('suggestedAircraft').textContent,
                 savedAt: new Date().toLocaleString()
             };
 
@@ -1045,15 +1189,16 @@
             
             routeList.innerHTML = routes.map(route => `
                 <div class="route-item">
-                    <div class="route-info">
-                        <div class="route-name">${escapeHtml(route.name)}</div>
-                        <div class="route-details">
+                        <div class="route-info">
+                            <div class="route-name">${escapeHtml(route.name)}</div>
+                            <div class="route-details">
                             ${route.departure ? route.departure.code : ''} → ${route.arrival ? route.arrival.code : ''} | ${route.aircraft}<br>
                             Demand: E${route.economyDemand}/B${route.businessDemand}/F${route.firstDemand} | Config: ${route.resultFirst}F/${route.resultBusiness}B/${route.resultEconomy}E<br>
+                            Route: ${route.routeLength || '-'} km | Target/flight: ${route.targetPaxPerFlight || '-'} | Suggest: ${route.suggestedAircraft || '-'}<br>
                             Saved: ${route.savedAt}
+                            </div>
                         </div>
-                    </div>
-                    <div class="route-actions">
+                        <div class="route-actions">
                         <button class="btn-load" onclick="loadRoute(${route.id})">Load</button>
                         <button class="btn-delete" onclick="deleteRoute(${route.id})">Delete</button>
                     </div>
@@ -1085,6 +1230,7 @@
             document.getElementById('economyDemand').value = route.economyDemand;
             document.getElementById('businessDemand').value = route.businessDemand;
             document.getElementById('firstDemand').value = route.firstDemand;
+            document.getElementById('routeLength').value = route.routeLength || '';
             
             // Find matching aircraft or use custom
             const aircraftSelect = document.getElementById('aircraftSelect');
@@ -1126,6 +1272,91 @@
             return div.innerHTML;
         }
 
+        function getSelectedAircraftInfo() {
+            const select = document.getElementById('aircraftSelect');
+            const value = select.value;
+            if (!value) return null;
+
+            if (value === 'custom') {
+                const customPax = parseInt(document.getElementById('customPax').value) || 0;
+                return { name: 'Custom', pax: customPax, speed: null };
+            }
+
+            const data = aircraftData[value];
+            if (!data) return null;
+            return { ...data };
+        }
+
+        function findSuggestedAircraft(targetPax) {
+            const candidates = Object.values(aircraftData).filter(a => a.pax <= targetPax);
+            if (candidates.length === 0) return null;
+            return candidates.sort((a, b) => b.pax - a.pax)[0];
+        }
+
+        function calculateFlightsPerDay(routeLengthKm, speedKph) {
+            if (routeLengthKm <= 0 || speedKph <= 0) return 0;
+            const flightHours = routeLengthKm / speedKph; // one-way time in hours
+            if (flightHours === 0) return 0;
+            return Math.max(1, Math.floor(24 / flightHours));
+        }
+
+        function calculateRecommendation(showErrors = true) {
+            // Hide error
+            const recError = document.getElementById('recommendationError');
+            recError.classList.remove('show');
+            recError.textContent = '';
+
+            const firstDemand = parseInt(document.getElementById('firstDemand').value) || 0;
+            const businessDemand = parseInt(document.getElementById('businessDemand').value) || 0;
+            const economyDemand = parseInt(document.getElementById('economyDemand').value) || 0;
+            const routeLength = parseFloat(document.getElementById('routeLength').value) || 0;
+            const weightedDemand = economyDemand + businessDemand * 2 + firstDemand * 3;
+
+            if (weightedDemand === 0) {
+                if (showErrors) {
+                    recError.textContent = '请输入需求数据后再获取推荐机型。';
+                    recError.classList.add('show');
+                }
+                return null;
+            }
+
+            if (routeLength <= 0) {
+                if (showErrors) {
+                    recError.textContent = '请输入有效的航线长度（公里）。';
+                    recError.classList.add('show');
+                }
+                return null;
+            }
+
+            let best = null;
+            Object.values(aircraftData).forEach(ac => {
+                const flightHours = routeLength / ac.speed;
+                if (flightHours <= 0 || !isFinite(flightHours)) return;
+                const flightsPerDay = Math.max(1, Math.floor(24 / flightHours));
+                const targetPerFlight = Math.max(1, Math.floor(weightedDemand / flightsPerDay));
+
+                if (ac.pax <= targetPerFlight) {
+                    if (!best || ac.pax > best.pax || (ac.pax === best.pax && flightsPerDay > best.flightsPerDay)) {
+                        best = { ...ac, flightsPerDay, targetPerFlight, flightHours };
+                    }
+                }
+            });
+
+            const recommendationSection = document.getElementById('recommendationSection');
+            recommendationSection.style.display = 'block';
+
+            document.getElementById('recRouteLength').textContent = routeLength.toFixed(1);
+            document.getElementById('recWeightedDemand').textContent = weightedDemand;
+            document.getElementById('recFlightsPerDay').textContent = best ? best.flightsPerDay : '-';
+            document.getElementById('recTargetPerFlight').textContent = best ? best.targetPerFlight : '-';
+            document.getElementById('recAircraft').textContent = best 
+                ? `${best.name} (${best.pax} PAX, ${best.speed} kph)`
+                : '无机型满足“容量不高于目标值”的条件';
+            document.getElementById('recFlightTime').textContent = best ? `${best.flightHours.toFixed(2)} h` : '-';
+
+            return best;
+        }
+
         // Show/hide custom PAX input
         document.getElementById('aircraftSelect').addEventListener('change', function() {
             const customInput = document.getElementById('customPaxInput');
@@ -1134,6 +1365,11 @@
             } else {
                 customInput.style.display = 'none';
             }
+        });
+
+        // Show recommendation on button click
+        document.getElementById('btnRecommend').addEventListener('click', function() {
+            calculateRecommendation(true);
         });
 
         function calculateSeats() {
@@ -1145,6 +1381,7 @@
             const firstDemand = parseInt(document.getElementById('firstDemand').value) || 0;
             const businessDemand = parseInt(document.getElementById('businessDemand').value) || 0;
             const economyDemand = parseInt(document.getElementById('economyDemand').value) || 0;
+            const routeLength = parseFloat(document.getElementById('routeLength').value) || 0;
             
             const aircraftSelect = document.getElementById('aircraftSelect').value;
             let totalPax;
@@ -1163,6 +1400,11 @@
 
             if (totalPax === 0) {
                 showError('Please select an aircraft or enter a custom PAX value.');
+                return;
+            }
+
+            if (routeLength <= 0) {
+                showError('Please enter a valid route length in kilometers.');
                 return;
             }
 
@@ -1231,6 +1473,23 @@
             document.getElementById('seatRatio').textContent = seatRatioText;
 
             document.getElementById('resultSection').classList.add('show');
+            
+            // Route ops suggestion
+            const selectedAircraft = getSelectedAircraftInfo();
+            const weightedDemand = economyDemand + businessDemand * 2 + firstDemand * 3;
+            const flightsPerDay = selectedAircraft && selectedAircraft.speed ? calculateFlightsPerDay(routeLength, selectedAircraft.speed) : 0;
+            const flightTimeHours = selectedAircraft && selectedAircraft.speed ? (routeLength / selectedAircraft.speed) : 0;
+            const targetPerFlight = flightsPerDay > 0 ? Math.max(1, Math.floor(weightedDemand / flightsPerDay)) : 0;
+            const suggestedAircraft = targetPerFlight > 0 ? findSuggestedAircraft(targetPerFlight) : null;
+
+            document.getElementById('routeLengthDisplay').textContent = routeLength.toFixed(1);
+            document.getElementById('weightedDemand').textContent = weightedDemand;
+            document.getElementById('flightsPerDay').textContent = flightsPerDay || 'Speed unavailable';
+            document.getElementById('routeFlightTime').textContent = flightTimeHours ? `${flightTimeHours.toFixed(2)} h` : '-';
+            document.getElementById('targetPaxPerFlight').textContent = targetPerFlight || '-';
+            document.getElementById('suggestedAircraft').textContent = suggestedAircraft 
+                ? `${suggestedAircraft.name} (${suggestedAircraft.pax} PAX, ${suggestedAircraft.speed} kph)`
+                : 'No matching aircraft within target (using preset speeds only)';
             
             // Update save button state
             updateSaveButtonState();
