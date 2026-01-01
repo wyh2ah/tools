@@ -1574,10 +1574,11 @@
             document.getElementById('resultSection').classList.add('show');
             
             // Route ops suggestion
+            const TIME_SCALE = 1.45553
             const selectedAircraft = getSelectedAircraftInfo();
             const weightedDemand = economyDemand + businessDemand * 2 + firstDemand * 3;
             const flightsPerDay = selectedAircraft && selectedAircraft.speed ? calculateFlightsPerDay(routeLength, selectedAircraft.speed) : 0;
-            const flightTimeHours = selectedAircraft && selectedAircraft.speed ? (routeLength / selectedAircraft.speed) : 0;
+            const flightTimeHours = selectedAircraft && selectedAircraft.speed ? (routeLength / selectedAircraft.speed) / TIME_SCALE : 0;
             const targetPerFlight = flightsPerDay > 0 ? Math.max(1, Math.floor(weightedDemand / flightsPerDay)) : 0;
             const suggestedAircraft = targetPerFlight > 0 ? findSuggestedAircraft(targetPerFlight) : null;
 
