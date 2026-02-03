@@ -1015,6 +1015,8 @@
             '168': { name: 'COMAC C919', pax: 168, speed: 970 }
         };
 
+        const TIME_SCALE = 1.45553;
+
         // Load airports from CSV file
         async function loadAirports() {
             try {
@@ -1368,7 +1370,7 @@
 
         function calculateFlightsPerDay(routeLengthKm, speedKph) {
             if (routeLengthKm <= 0 || speedKph <= 0) return 0;
-            const flightHours = routeLengthKm / speedKph; // one-way time in hours
+            const flightHours = (routeLengthKm / speedKph) / TIME_SCALE; // one-way time in hours
             if (flightHours === 0) return 0;
             return Math.max(1, Math.ceil(24 / flightHours));
         }
@@ -1412,7 +1414,7 @@
 
             let best = null;
             Object.values(aircraftData).forEach(ac => {
-                const flightHours = routeLength / ac.speed;
+                const flightHours = (routeLength / ac.speed) / TIME_SCALE;
                 if (flightHours <= 0 || !isFinite(flightHours)) return;
                 const flightsPerDay = Math.max(1, Math.ceil(24 / flightHours));
                 const targetPerFlight = Math.max(1, Math.floor(weightedDemand / flightsPerDay));
@@ -1574,7 +1576,6 @@
             document.getElementById('resultSection').classList.add('show');
             
             // Route ops suggestion
-            const TIME_SCALE = 1.45553
             const selectedAircraft = getSelectedAircraftInfo();
             const weightedDemand = economyDemand + businessDemand * 2 + firstDemand * 3;
             const flightsPerDay = selectedAircraft && selectedAircraft.speed ? calculateFlightsPerDay(routeLength, selectedAircraft.speed) : 0;
